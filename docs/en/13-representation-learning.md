@@ -97,9 +97,9 @@ objectives with stop-gradient and redundancy constraints. The method must preser
 
 ## 13.6 Evaluation and retrieval systems
 
-- **Recall@$k$:** whether a relevant item appears in the first $k$.
+- **Recall@k:** whether a relevant item appears in the first $k$.
 - **MRR:** $\frac1m\sum_i1/r_i$, emphasizing the first relevant rank.
-- **NDCG@$k$:** graded relevance with larger credit near the top.
+- **NDCG@k:** graded relevance with larger credit near the top.
 - **Linear probe/kNN:** whether frozen representations make downstream structure easily accessible.
 - **Transfer tests:** robustness across tasks, domains, and subgroups.
 
@@ -115,7 +115,7 @@ the fixed seed, Recall@1 moves from about 0.013 to 0.863, Recall@5 reaches about
 numbers validate a synthetic mechanism, not language understanding.
 
 Approximate nearest-neighbor indexes trade a small amount of recall for speed and memory. Report encoding cost, index
-build time, P95 latency, throughput, memory, and exact Recall@$k$ together.
+build time, P95 latency, throughput, memory, and exact Recall@k together.
 
 ## 13.7 Architecture and failure diagnosis
 

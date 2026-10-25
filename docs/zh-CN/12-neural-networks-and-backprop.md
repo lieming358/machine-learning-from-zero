@@ -93,7 +93,7 @@ A_2=\phi(A_1W_2+b_2),\qquad
 p=\sigma(A_2W_3+b_3).$$
 
 若一个样本有 2 个特征，两个隐藏层宽度分别为 4 和 3，则
-$W_1\in\mathbb R^{2\times4}$、$W_2\in\mathbb R^{4\times3}$、
+$W_1\in\mathbb R^{2\times4}$、 $W_2\in\mathbb R^{4\times3}$、
 $W_3\in\mathbb R^{3\times1}$。隐藏层不是在“投票”，而是在逐层构造新表示：第一层可学习较简单
 组合，第二层再组合这些中间模式，输出层据此完成预测。
 
@@ -108,8 +108,8 @@ $W_3\in\mathbb R^{3\times1}$。隐藏层不是在“投票”，而是在逐层�
 $$W_1=\begin{bmatrix}0.1&-0.2\\0.3&0.4\end{bmatrix},\quad
 b_1=[0,0],\quad W_2=\begin{bmatrix}0.5\\-0.5\end{bmatrix},\quad b_2=0.$$
 
-则 $Z_1=xW_1=[0.7,0.6]$，$A_1=\tanh(Z_1)\approx[0.604,0.537]$，
-$Z_2\approx0.0335$，$p=\sigma(Z_2)\approx0.508$。若标签 $y=1$，损失
+则 $Z_1=xW_1=[0.7,0.6]$， $A_1=\tanh(Z_1)\approx[0.604,0.537]$，
+$Z_2\approx0.0335$， $p=\sigma(Z_2)\approx0.508$。若标签 $y=1$，损失
 $L=-\log p\approx0.677$。每层只是矩阵乘法、加偏置和逐元素非线性。
 
 ## 12.3 反向传播：把链式法则组织成可复用计算
@@ -134,7 +134,7 @@ $$dW_1=X^\top dZ_1,\qquad db_1=\sum_i dZ_{1,i}.$$
 $\odot$ 是逐元素乘法。每一行都可用“上游梯度 × 当前局部导数”理解。矩阵转置不是记忆技巧：
 检查目标梯度形状必须与对应参数相同，就能排除许多错误。
 
-继续上面的数字例子。$dZ_2=p-y\approx-0.492$，所以
+继续上面的数字例子。 $dZ_2=p-y\approx-0.492$，所以
 $dW_2=A_1^\top dZ_2\approx[-0.297,-0.264]^\top$，
 $dA_1=dZ_2W_2^\top\approx[-0.246,0.246]$。再乘 tanh 的局部导数，得到
 $dZ_1\approx[-0.156,0.175]$，进而
@@ -147,7 +147,7 @@ $W_{2,1}\leftarrow0.5-0.1(-0.297)=0.5297$，它增大了正向激活对正类 lo
 
 ### 一个标量链式法则例子
 
-若 $u=wx+b$，$a=\tanh u$，$L=(a-y)^2/2$，则
+若 $u=wx+b$， $a=\tanh u$， $L=(a-y)^2/2$，则
 
 $$\frac{\partial L}{\partial w}=(a-y)(1-a^2)x.$$
 
@@ -192,7 +192,7 @@ He 初始化常用于 ReLU：
 
 $$\operatorname{Var}(W)\approx\frac{2}{n_{in}}.$$
 
-这个系数来自方差传播。若输入近似独立、零均值，$z=\sum_jw_jx_j$ 有
+这个系数来自方差传播。若输入近似独立、零均值， $z=\sum_jw_jx_j$ 有
 $\operatorname{Var}(z)\approx n_{in}\operatorname{Var}(w)\operatorname{Var}(x)$。
 让前后方差相近便得到 Xavier 的 $1/n_{in}$；ReLU 约丢掉一半激活能量，因此用 2 补偿。
 

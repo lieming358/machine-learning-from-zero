@@ -55,11 +55,11 @@ flowchart LR
 
 ## 3.2 知识推导链
 
-1. 选模型：$f_{w,b}(x)=w^Tx+b$。
+1. 选模型： $f_{w,b}(x)=w^Tx+b$。
 2. 假设观测值围绕直线有高斯噪声。
 3. 最大似然等价于最小化残差平方和。
 4. 对目标求梯度，可迭代更新；令梯度为零，也可得到解析解。
-5. 在未见数据上用 RMSE/MAE/$R^2$ 验证假设是否有用。
+5. 在未见数据上用 RMSE、MAE 与 $R^2$ 验证假设是否有用。
 6. 看残差图检查非线性、异方差、异常值与遗漏变量。
 
 ### 再看三个线性回归例子
@@ -119,7 +119,7 @@ $$\theta\leftarrow\theta-\eta\frac2mX^T(X\theta-y).$$
 $$\mathrm{RMSE}=\sqrt{\frac1m\sum_i(y^{(i)}-\hat y^{(i)})^2},\qquad
 R^2=1-\frac{\sum_i(y^{(i)}-\hat y^{(i)})^2}{\sum_i(y^{(i)}-\bar y)^2}.$$
 
-$R^2=1$ 是完美拟合；$R^2=0$ 与预测均值相当；测试集 $R^2$ 可以为负，表示比均值基线还差。
+$R^2=1$ 是完美拟合； $R^2=0$ 与预测均值相当；测试集 $R^2$ 可以为负，表示比均值基线还差。
 
 为什么同时看 RMSE 和 MAE？RMSE 对大错误更敏感，适合“大错代价更高”的任务；MAE 与目标
 同单位且更抗异常值。指标应由错误代价决定，而不是哪一个数字更好看。
@@ -200,7 +200,7 @@ $$x\longrightarrow [x,x^2,x^3],\qquad
 ![Ridge 与 Lasso 随正则强度变化的系数路径](../assets/regularization-coefficient-paths.png)
 
 横轴 $\lambda$ 是正则强度。向右时约束更强：Ridge 的系数通常平滑靠近 0；Lasso 会让一部分
-系数直接落到 0。$\lambda=0$ 时二者退回普通最小二乘；过大时又会把真实信号一起压没，造成
+系数直接落到 0。 $\lambda=0$ 时二者退回普通最小二乘；过大时又会把真实信号一起压没，造成
 欠拟合。因此 $\lambda$ 是用验证集/交叉验证选择的**超参数**，不是训练集上学出的普通参数。
 
 带 Ridge 的目标和解析解现在才有了出现理由：
@@ -256,7 +256,7 @@ python code/chapter03/regression_family_comparison.py
 > **苏格拉底追问**：若校园能耗的训练、验证误差都很高，此时直接增大 Ridge 的 $\lambda$ 会
 > 更好吗？如果两个相关特征被 Lasso 留下不同的一个，能否把任意一次结果当科学发现？
 
-Elastic Net（$L_1+L_2$）和 Huber 回归先作为后续路标：前者折中稀疏与稳定，后者降低异常值
+Elastic Net（ $L_1+L_2$）和 Huber 回归先作为后续路标：前者折中稀疏与稳定，后者降低异常值
 影响。此处不要求记忆；第 9 章会在模型选择与学习理论中系统比较。
 
 ## 3.7 两条选修支线：样本可靠性与局部规律
@@ -326,7 +326,7 @@ python code/chapter03/real_dataset_baseline.py
 
 ![真实 Diabetes 数据上的预测与残差](../assets/diabetes-real-data-diagnostics.png)
 
-实验同时报告均值基线、RMSE、MAE、$R^2$ 和 paired bootstrap 95% 区间。图左虚线代表完美
+实验同时报告均值基线、RMSE、MAE、 $R^2$ 和 paired bootstrap 95% 区间。图左虚线代表完美
 预测；散点离虚线越远，误差越大。图右检查残差是否随预测值呈系统结构。
 
 > [!WARNING]
@@ -355,7 +355,7 @@ python code/chapter03/real_dataset_baseline.py
 
 <details><summary>Q2：为何不在代码里直接计算 $(X^TX)^{-1}$？</summary>
 
-显式求逆更慢、数值误差更大；$X^TX$ 还会使条件数平方。`lstsq` 的 QR/SVD 路线更可靠。
+显式求逆更慢、数值误差更大； $X^TX$ 还会使条件数平方。`lstsq` 的 QR/SVD 路线更可靠。
 </details>
 
 <details><summary>Q3：特征乘以 100，模型预测一定改变吗？</summary>
@@ -366,7 +366,7 @@ python code/chapter03/real_dataset_baseline.py
 
 <details><summary>Q4：线性模型怎样表达曲线？</summary>
 
-对参数线性即可。加入 $x^2,x^3$ 后，$y=w_0+w_1x+w_2x^2$ 对 $w$ 仍是线性回归。
+对参数线性即可。加入 $x^2,x^3$ 后， $y=w_0+w_1x+w_2x^2$ 对 $w$ 仍是线性回归。
 </details>
 
 ## 3.11 练习与研究延伸
@@ -384,7 +384,7 @@ python code/chapter03/real_dataset_baseline.py
 - **基本假设？** 对参数线性、误差条件均值为零；做经典区间推断时还常假设独立、同方差、正态。
 - **多重共线性？** 特征高度相关使系数方差大、解释不稳定；预测未必同样糟。
 - **为什么最小二乘对异常值敏感？** 残差被平方，大误差获得更大权重。
-- **$R^2$ 越高越好吗？** 训练 $R^2$ 随无关特征也不降；看调整 $R^2$、验证结果与任务指标。
+- **关于 $R^2$：越高越好吗？** 训练 $R^2$ 随无关特征也不降；看调整 $R^2$、验证结果与任务指标。
 - **Ridge 与 Lasso？** Ridge 用 $L_2$ 稳定并收缩；Lasso 用 $L_1$，可产生稀疏系数。
 - **闭式解和梯度下降如何选？** 依据规模、稀疏性、在线需求与是否要复用复杂目标的优化框架。
 
@@ -398,7 +398,7 @@ python code/chapter03/real_dataset_baseline.py
 - [ ] 我能从 MSE 推导梯度和正规方程，并说明为何代码不显式求逆。
 - [ ] 我能解释 Gaussian 噪声假设如何导出最小二乘。
 - [ ] 我能比较全局、加权与局部加权回归的假设和成本。
-- [ ] 我能解释 RMSE、MAE、$R^2$ 和均值基线分别回答什么。
+- [ ] 我能解释 RMSE、MAE、 $R^2$ 和均值基线分别回答什么。
 - [ ] 我能从残差图识别非线性、异方差和异常点迹象。
 - [ ] 我能先说出观察到的失败证据，再决定使用多项式、Ridge 或 Lasso。
 - [ ] 我知道多项式增加容量，Ridge/Lasso 增加约束，二者不是同一维度的选择。

@@ -37,11 +37,11 @@ kNN 保存所有样本并在预测时查询。能否训练时找出少数真正�
 ## 7.2 间隔到底是什么？
 
 现在再把“安全缓冲”翻译成数学。设标签 $y\in\{-1,+1\}$，模型分数
-$f(x)=w^Tx+b$；$f(x)=0$ 是决策边界。把标签乘进分数，得到 signed score
+$f(x)=w^Tx+b$； $f(x)=0$ 是决策边界。把标签乘进分数，得到 signed score
 $y^{(i)}f(x^{(i)})$：它为负表示分错，为正表示分对，越大表示位于正确一侧越深。
 
-- functional margin：$y^{(i)}f(x^{(i)})$；
-- geometric margin：$y^{(i)}f(x^{(i)})/\|w\|_2$。
+- functional margin： $y^{(i)}f(x^{(i)})$；
+- geometric margin： $y^{(i)}f(x^{(i)})/\|w\|_2$。
 
 为什么还要除以 $\|w\|_2$？把 $w,b$ 同时放大 10 倍不会移动边界，却会把 functional margin
 放大 10 倍；它不是实际距离。除以 $\|w\|_2$ 后缩放被抵消，才得到点到超平面的有符号距离。
@@ -127,7 +127,7 @@ python code/chapter07/course_lab.py
 ```
 
 `course_lab.py` 逐步打印三个 margin 的 hinge loss、一次原始问题更新，以及本章后面两点对偶例子的
-Gram 矩阵、$\alpha$、$w$ 和 margin；主脚本继续负责完整数据与图片。
+Gram 矩阵、 $\alpha$、 $w$ 和 margin；主脚本继续负责完整数据与图片。
 
 固定输出：
 
@@ -221,7 +221,7 @@ score 经 sigmoid 就宣称为可靠概率。
 
 | 症状 | 原因 | 修复 |
 |---|---|---|
-| 全预测多数类 | 不平衡、$C$ 不当 | class weight、指标、阈值 |
+| 全预测多数类 | 不平衡、 $C$ 不当 | class weight、指标、阈值 |
 | RBF 边界碎裂 | $\gamma/C$ 太大 | 交叉验证、更多数据、缩放 |
 | 训练极慢 | 样本太多/支持向量多 | 线性模型、近似核、采样 |
 | 概率不可靠 | score 未校准 | 独立校准集、Brier/log loss |
@@ -275,7 +275,7 @@ $\|w\|$，消除了这种任意缩放。
 </details>
 
 <details><summary>用了 RBF 核以后，为什么还必须标准化？</summary>
-RBF 直接依赖欧氏距离。未缩放时大单位特征会主宰距离，$\gamma$ 的含义也随单位改变。
+RBF 直接依赖欧氏距离。未缩放时大单位特征会主宰距离， $\gamma$ 的含义也随单位改变。
 </details>
 
 <details><summary>SVM decision score 经过 sigmoid 就是概率吗？</summary>
@@ -288,7 +288,7 @@ RBF 直接依赖欧氏距离。未缩放时大单位特征会主宰距离，$\ga
 完成后对照[第 7 章参考答案](solutions/07-solutions.md)。
 
 1. **推导**：从点到超平面距离推导几何间隔，并说明为什么要固定 functional margin。
-2. **软间隔**：分别讨论 $yf(x)<0$、$0<yf(x)<1$、$yf(x)>1$ 时 hinge loss 与次梯度。
+2. **软间隔**：分别讨论 $yf(x)<0$、 $0<yf(x)<1$、 $yf(x)>1$ 时 hinge loss 与次梯度。
 3. **调参实验**：画 $C\times\gamma$ 的交叉验证热图，同时报告支持向量数量和训练时间。
 4. **支持向量实验**：分别删除远离边界的点和支持向量，重训并比较边界变化。
 5. **校准实验**：比较 raw decision score、Platt scaling 与 isotonic 的 Brier score 和校准图。
@@ -299,7 +299,7 @@ RBF 直接依赖欧氏距离。未缩放时大单位特征会主宰距离，$\ga
 - **SVM 的核心思想？** 在控制训练违例的同时最大化几何间隔，提高对小扰动的稳健性。
 - **支持向量是什么？** 位于间隔边界内或违反间隔、具有非零对偶系数并决定边界的样本。
 - **硬间隔与软间隔？** 硬间隔不容许违例；软间隔用 $C$ 权衡间隔宽度和训练违例。
-- **$C$ 越大正则越强吗？** 相反；大 $C$ 更重罚违例，等价于相对更弱的正则约束。
+- **参数 $C$ 越大，正则越强吗？** 相反；大 $C$ 更重罚违例，等价于相对更弱的正则约束。
 - **hinge loss 有什么特点？** $\max(0,1-yf(x))$；分对但间隔不足仍受罚，超过单位间隔损失为 0。
 - **为什么转成对偶？** 数据只通过点积出现，可使用核技巧；解还可由支持向量展开。
 - **SMO 为什么一次更新两个 $\alpha$？** 单独改变一个变量会破坏 $\sum_i\alpha_i y^{(i)}=0$。
@@ -311,7 +311,7 @@ RBF 直接依赖欧氏距离。未缩放时大单位特征会主宰距离，$\ga
 
 - [ ] 我能从“许多边界都分对”解释为什么需要最大间隔。
 - [ ] 我能区分 functional/geometric margin，并推导硬间隔与软间隔目标。
-- [ ] 我能解释 hinge、$C$、支持向量和次梯度。
+- [ ] 我能解释 hinge、 $C$、支持向量和次梯度。
 - [ ] 我能从 Lagrangian 得到对偶中的点积，并说明核技巧。
 - [ ] 我能解释 SMO 为什么更新两个变量，并读懂 KKT 条件的作用。
 - [ ] 我能联合选择 $C,\gamma$，同时检查缩放、支持向量数和校准。
@@ -321,7 +321,7 @@ RBF 直接依赖欧氏距离。未缩放时大单位特征会主宰距离，$\ga
 
 - [Stanford CS229：SVM、核方法与课程材料](https://cs229.stanford.edu/syllabus-new.html)
 - [scikit-learn：Support Vector Machines 用户指南](https://scikit-learn.org/stable/modules/svm.html)
-- [scikit-learn：RBF SVM 的 $C$ 与 $\gamma$ 示例](https://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html)
+- [scikit-learn：RBF SVM 的 C 与 γ 示例](https://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html)
 - [LIBSVM: A Library for Support Vector Machines](https://www.csie.ntu.edu.tw/~cjlin/papers/libsvm.pdf)
 
 [继续：不依赖距离和光滑边界的 if-then 模型——第 8 章 →](08-trees-and-ensembles.md)

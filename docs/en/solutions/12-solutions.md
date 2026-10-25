@@ -18,5 +18,5 @@ symmetry, tiny/huge scales shrink/explode signals, and Xavier/He approximately p
 ## 6–7. Fair optimization and Transformers
 
 Use equal data order, update/epoch budget, search budget, and stopping rule for SGD, Momentum, and AdamW; report
-validation, test, time, and optimizer memory. In a width-$d$ Transformer, Q/K/V/O projections total about $4d^2$
+validation, test, time, and optimizer memory. In a width $d$ Transformer, Q/K/V/O projections total about $4d^2$
 parameters, while a two-layer MLP has about $2dd_{ff}$, often $8d^2$ when $d_{ff}=4d$.

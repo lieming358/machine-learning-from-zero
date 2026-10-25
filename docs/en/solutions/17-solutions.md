@@ -16,6 +16,6 @@ by event time and build every feature only from past information; sampled-negati
 
 ## 5–7. Retrieval and experiments
 
-Use exact top-$K$ as ANN reference and sweep search effort, reporting Recall, P95, throughput, and memory. Sweep MMR
+Use exact top-K as ANN reference and sweep search effort, reporting Recall, P95, throughput, and memory. Sweep MMR
 $\lambda$ for relevance versus intra-list diversity. A new-item A/B test should randomize exploration exposure and guard
 retention, complaints, latency, and catalog ecology; never label unexposed items negative.

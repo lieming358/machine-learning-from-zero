@@ -27,5 +27,5 @@ $\epsilon=\sqrt{\log(2|\mathcal H|/\delta)/(2m)}$.
 
 Noise raises attainable error and selection variance; more data usually stabilizes selection; more candidates increase
 validation selection bias. Group patients by patient ID, choose grouped or temporal user splits according to deployment,
-and roll sales validation forward in time. For RAG, separately score retrieval Recall@$k$, reranking, grounded generation,
+and roll sales validation forward in time. For RAG, separately score retrieval Recall@k, reranking, grounded generation,
 and end-to-end answers; label the stage where each failure began.

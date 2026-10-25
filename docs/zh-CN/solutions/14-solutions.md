@@ -34,7 +34,7 @@ $\partial h_3/\partial h_0=\prod_{t=1}^{3}\phi'(a_t)w_h$；线性激活时退化
 
 反向维护 $\delta_t=\partial L/\partial a_t$，累加
 $\partial L/\partial W_h=\sum_t\delta_th_{t-1}^T$、
-$\partial L/\partial W_x=\sum_t\delta_tx_t^T$、$\partial L/\partial b=\sum_t\delta_t$。对每个参数用
+$\partial L/\partial W_x=\sum_t\delta_tx_t^T$、 $\partial L/\partial b=\sum_t\delta_t$。对每个参数用
 中心差分，报告相对误差；大误差先检查时间索引和共享梯度是否求和。
 
 ## 7. 一步 LSTM

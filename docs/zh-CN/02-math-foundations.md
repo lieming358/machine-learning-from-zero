@@ -53,7 +53,7 @@ flowchart TD
 
 - 标量 $a\in\mathbb R$：一个数，如学习率。
 - 向量 $x\in\mathbb R^d$：一列特征。
-- 矩阵 $X\in\mathbb R^{m\times d}$：$m$ 个样本，每个 $d$ 维。
+- 矩阵 $X\in\mathbb R^{m\times d}$： $m$ 个样本，每个 $d$ 维。
 - 张量：更高维数组；图像批次常为 $[B,C,H,W]$，LLM 隐状态常为 $[B,T,D]$。
 
 ### 用“房屋表格”理解四种对象
@@ -70,14 +70,14 @@ flowchart TD
 
 ![数据矩阵的行、列与单个元素](../assets/dataset-matrix-anatomy.png)
 
-> **图中练习**：蓝色矩阵第 3 行代表哪个对象？第 2 列代表哪个属性？$X_{32}$、
+> **图中练习**：蓝色矩阵第 3 行代表哪个对象？第 2 列代表哪个属性？ $X_{32}$、
 > $x_2^{(3)}$ 为什么是同一个数？
 
-若 $X\in\mathbb R^{m\times d}$、$w\in\mathbb R^d$，则
+若 $X\in\mathbb R^{m\times d}$、 $w\in\mathbb R^d$，则
 
 $$\hat y=Xw+b\mathbf 1\in\mathbb R^m.$$
 
-矩阵乘法内维必须相等：$(m\times d)(d\times1)=(m\times1)$。写公式时标注形状，能消灭
+矩阵乘法内维必须相等： $(m\times d)(d\times1)=(m\times1)$。写公式时标注形状，能消灭
 大量代码 bug。
 
 ### 矩阵乘法到底在算什么？
@@ -103,14 +103,14 @@ Transformer attention 中的 $q^Tk$ 也在计算 query 与 key 的匹配程度�
 向量方向相近，夹角小、余弦接近 1；方向相反时接近 -1；垂直时点积为 0。
 
 **小例子**：用户偏好向量 $u=[0.8,0.2]$ 表示更爱科幻而非爱情；电影 A 为
-$v_A=[0.9,0.1]$，电影 B 为 $v_B=[0.1,0.9]$。$u^Tv_A=0.74$，$u^Tv_B=0.26$，因此最简单的
+$v_A=[0.9,0.1]$，电影 B 为 $v_B=[0.1,0.9]$。 $u^Tv_A=0.74$， $u^Tv_B=0.26$，因此最简单的
 向量推荐会优先 A。真正系统的向量有数百维，但计算思想相同。
 
 ### 范数：先认识以后限制模型的两把尺子
 
 $$\|w\|_1=\sum_j|w_j|,\qquad \|w\|_2=\sqrt{\sum_jw_j^2}.$$
 
-$L_2$ 惩罚倾向于让权重整体变小；$L_1$ 的尖角几何更容易产生精确的零，因而可做稀疏选择。
+$L_2$ 惩罚倾向于让权重整体变小； $L_1$ 的尖角几何更容易产生精确的零，因而可做稀疏选择。
 LLM 的 weight decay 与 $L_2$ 思想相关，但在 AdamW 中将衰减从梯度更新中解耦。
 
 这里先认识两种“长度”即可，不要求选择算法。第 3 章会先展示高次模型和共线特征怎样失败，
@@ -121,7 +121,7 @@ LLM 的 weight decay 与 $L_2$ 思想相关，但在 AdamW 中将衰减从梯度
 
 ### 线性无关、秩与可逆
 
-若一个特征能由其他特征线性组合得到，$X$ 的列不满秩，$X^TX$ 可能不可逆，线性回归的
+若一个特征能由其他特征线性组合得到， $X$ 的列不满秩， $X^TX$ 可能不可逆，线性回归的
 参数解不唯一。实践中可删除冗余特征、加正则，或使用数值更稳定的 QR/SVD/伪逆。
 
 ### 特征值、SVD 与低秩：为什么能压缩？
@@ -131,7 +131,7 @@ LLM 的 weight decay 与 $L_2$ 思想相关，但在 AdamW 中将衰减从梯度
 $$X=U\Sigma V^T.$$
 
 奇异值矩阵 $\Sigma$ 按重要程度描述不同方向。只保留最大的 $r$ 个奇异值，就得到优秀的
-秩-$r$ 近似。PCA、图片压缩、推荐矩阵分解以及 LoRA 的低秩更新都建立在“有效信息集中在
+秩 $r$ 近似。PCA、图片压缩、推荐矩阵分解以及 LoRA 的低秩更新都建立在“有效信息集中在
 少数方向”这一思想上。
 
 > **课堂追问**：一个 $1000\times1000$ 权重矩阵若用两个秩 8 的矩阵表示更新，参数量从多少
@@ -225,11 +225,11 @@ $$
 $$w\leftarrow w-\eta\frac2m\sum_i e^{(i)}x^{(i)},\qquad
 b\leftarrow b-\eta\frac2m\sum_i e^{(i)}.$$
 
-向量化后，$e=Xw+b\mathbf1-y$：
+向量化后， $e=Xw+b\mathbf1-y$：
 
 $$\nabla_wJ=\frac2mX^Te,\qquad \frac{\partial J}{\partial b}=\frac2m\mathbf1^Te.$$
 
-**形状检查**：$X^T$ 是 $d\times m$，乘 $e\in\mathbb R^m$ 得到 $d$ 维，正好与 $w$ 同形。
+**形状检查**： $X^T$ 是 $d\times m$，乘 $e\in\mathbb R^m$ 得到 $d$ 维，正好与 $w$ 同形。
 
 ## 2.4 概率：描述不确定性
 
@@ -289,9 +289,9 @@ BatchNorm/LayerNorm 则围绕激活的统计量稳定训练。
 
 | 分布 | 用途 | AI 连接 |
 |---|---|---|
-| Bernoulli$(p)$ | 二分类 | 点击/不点击 |
-| Categorical$(p)$ | 多分类 | 下一个 token |
-| Gaussian$(\mu,\sigma^2)$ | 连续噪声 | 回归、扩散模型加噪 |
+| $\operatorname{Bernoulli}(p)$ | 二分类 | 点击/不点击 |
+| $\operatorname{Categorical}(p)$ | 多分类 | 下一个 token |
+| $\operatorname{Gaussian}(\mu,\sigma^2)$ | 连续噪声 | 回归、扩散模型加噪 |
 | Uniform | 等可能采样 | 初始化、随机探索 |
 
 ### 独立、条件独立与 i.i.d.
@@ -345,7 +345,7 @@ MLE 只看似然；MAP 还乘先验。数据少时先验影响大，数据很多
 
 完整贝叶斯预测不会只塞入一个参数点，而会对后验平均：
 
-$$p(y_*\mid x_*,D)=\int p(y_*\mid x_*,\theta)p(\theta\mid D)\,d\theta.$$
+$$p(y_{\ast}\mid x_{\ast},D)=\int p(y_{\ast}\mid x_{\ast},\theta)p(\theta\mid D)\,d\theta.$$
 
 它能表达参数不确定性，但积分常难以精确计算，需要采样或变分近似。MAP 只是后验峰值，不等于
 后验均值，也不提供完整不确定性。
@@ -359,7 +359,7 @@ $$p(y_*\mid x_*,D)=\int p(y_*\mid x_*,\theta)p(\theta\mid D)\,d\theta.$$
 
 $$p_k=\frac{e^{z_k}}{\sum_je^{z_j}},\qquad L=-\sum_ky_k\log p_k.$$
 
-one-hot 标签下，$L=-\log p_{true}$：正确类别概率越小，惩罚越大。推导可得
+one-hot 标签下， $L=-\log p_{true}$：正确类别概率越小，惩罚越大。推导可得
 
 $$\frac{\partial L}{\partial z}=p-y.$$
 
@@ -515,7 +515,7 @@ Huber loss 或显式使用更合适的噪声模型。
 
 <details><summary>Q5：训练 loss 变成 NaN，先检查什么？</summary>
 
-学习率过大、除零、$\log 0$、指数溢出、输入尺度、异常数据和梯度爆炸；打印有限性、范围和
+学习率过大、除零、 $\log 0$、指数溢出、输入尺度、异常数据和梯度爆炸；打印有限性、范围和
 梯度范数，从第一个出现非有限值的运算向前追。
 </details>
 
@@ -523,7 +523,7 @@ Huber loss 或显式使用更合适的噪声模型。
 
 完成后对照：[第 1～3 章提示、参考答案与评分标准](solutions/01-03-solutions.md)。
 
-1. **形状**：若 $X:[32,128]$、$W:[128,64]$，写出 $XW$ 形状与乘加数量级。
+1. **形状**：若 $X:[32,128]$、 $W:[128,64]$，写出 $XW$ 形状与乘加数量级。
 2. **推导**：为 $J(w)=\frac1m\|Xw-y\|_2^2+\lambda\|w\|_2^2$ 推导梯度。
 3. **概率**：证明最大化 Bernoulli 似然等价于最小化二元交叉熵。
 4. **编程**：把示例的 MSE 换成 MAE；不可导点如何处理？比较有异常值时的表现。

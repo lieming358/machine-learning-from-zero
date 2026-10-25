@@ -85,7 +85,7 @@ prior plus additive per-word log evidence.
 ## Zero probabilities and Laplace smoothing
 
 MLE sets $\hat\theta_{cj}=N_{cj}/\sum_kN_{ck}$. One unseen class–word pair then zeros an entire
-document likelihood. Add-$\alpha$ smoothing uses
+document likelihood. Add-α smoothing uses
 
 $$\hat\theta_{cj}=\frac{N_{cj}+\alpha}{\sum_kN_{ck}+\alpha V}.$$
 
@@ -119,7 +119,7 @@ anomaly methods; and lightweight NB can be a latency baseline for intent routing
 
 - [ ] Distinguish $p(y\mid x)$, $p(x\mid y)$, the prior, and the joint distribution.
 - [ ] Derive GDA's MLEs and the linear boundary under shared covariance.
-- [ ] Implement Multinomial NB in log space and derive add-$\alpha$ smoothing.
+- [ ] Implement Multinomial NB in log space and derive add-α smoothing.
 - [ ] Diagnose covariance singularity, correlated evidence, calibration, and prior drift.
 - [ ] Choose fairly among logistic regression, LDA, QDA, and NB.
 

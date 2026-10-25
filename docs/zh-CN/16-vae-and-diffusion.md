@@ -84,7 +84,7 @@ $p(z)$ 采样时 decoder 仍见过附近区域。实际最小化负 ELBO：重�
 $$\epsilon\sim\mathcal N(0,I),\qquad
 z=\mu_\phi(x)+\sigma_\phi(x)\odot\epsilon.$$
 
-随机变量 $\epsilon$ 与参数无关，$z$ 对 $\mu,\sigma$ 是确定可微函数。
+随机变量 $\epsilon$ 与参数无关， $z$ 对 $\mu,\sigma$ 是确定可微函数。
 
 ![VAE重参数化把随机性移到encoder参数之外](../assets/vae-reparameterization.png)
 
@@ -98,7 +98,7 @@ $$D_{KL}(q\|p)=\frac12\sum_j
 
 ### 一维 VAE 的数字例子
 
-设 encoder 输出 $\mu=1$、$\log\sigma^2=\log0.25$，所以 $\sigma=0.5$。本次采到
+设 encoder 输出 $\mu=1$、 $\log\sigma^2=\log0.25$，所以 $\sigma=0.5$。本次采到
 $\epsilon=-0.4$，则 $z=1+0.5(-0.4)=0.8$。它到标准正态的 KL 为
 
 $$\frac12(1^2+0.5^2-\log0.25-1)\approx0.818.$$
@@ -134,7 +134,7 @@ warm-up、free bits、限制 decoder 或改变架构，但需同时观察潜变�
 
 $$q(x_t\mid x_{t-1})=\mathcal N(\sqrt{1-\beta_t}x_{t-1},\beta_tI).$$
 
-令 $\alpha_t=1-\beta_t$、$\bar\alpha_t=\prod_{s=1}^t\alpha_s$，可一步采样任意时刻：
+令 $\alpha_t=1-\beta_t$、 $\bar\alpha_t=\prod_{s=1}^t\alpha_s$，可一步采样任意时刻：
 
 $$x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\epsilon,
 \qquad \epsilon\sim\mathcal N(0,I).$$
@@ -146,7 +146,7 @@ $$x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\epsilon,
 
 ### 两步加噪的手算
 
-取标量 $x_0=2$，$\alpha_1=0.9,\alpha_2=0.8$，所以 $\bar\alpha_2=0.72$。若闭式采样的
+取标量 $x_0=2$， $\alpha_1=0.9,\alpha_2=0.8$，所以 $\bar\alpha_2=0.72$。若闭式采样的
 $\epsilon=-0.5$，则
 
 $$x_2=\sqrt{0.72}\times2+\sqrt{0.28}\times(-0.5)\approx1.433.$$

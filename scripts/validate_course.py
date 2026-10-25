@@ -56,6 +56,8 @@ def check_markdown_syntax() -> list[str]:
         text = path.read_text(encoding="utf-8")
         lines = text.splitlines()
         fence: tuple[str, int] | None = None
+        inline_math_start: tuple[int, int] | None = None
+        display_math_open = False
         outside: list[str] = []
         for line_number, line in enumerate(lines, 1):
             match = re.match(r"^\s{0,3}(`{3,}|~{3,})(.*)$", line)
@@ -68,12 +70,53 @@ def check_markdown_syntax() -> list[str]:
                 continue
             if fence is None:
                 outside.append(line)
+                scan_line = re.sub(r"`+[^`]*`+", "", line)
+                if re.search(
+                    r"\[[^]\n]*\$(?!\$)[^$\n]+\$[^]\n]*\]\(", scan_line
+                ):
+                    errors.append(
+                        "math delimiters inside link labels are not rendered by GitHub: "
+                        f"{relative}:{line_number}"
+                    )
+                if scan_line.lstrip().startswith("|"):
+                    for table_math in re.finditer(
+                        r"(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)", scan_line
+                    ):
+                        if re.search(r"(?<!\\)\|", table_math.group(1)):
+                            errors.append(
+                                "unescaped table pipe inside math; use \\lvert/\\rvert: "
+                                f"{relative}:{line_number}"
+                            )
+                column = 0
+                while column < len(scan_line):
+                    if scan_line.startswith("$$", column):
+                        if inline_math_start is None:
+                            display_math_open = not display_math_open
+                        column += 2
+                        continue
+                    if scan_line[column] == "$" and not display_math_open:
+                        if inline_math_start is None:
+                            previous = scan_line[column - 1] if column else ""
+                            if previous and not previous.isspace() and previous not in "([{>":
+                                errors.append(
+                                    "unsafe inline-math opening boundary; add a space or "
+                                    f"rewrite the term: {relative}:{line_number}"
+                                )
+                            inline_math_start = (line_number, column + 1)
+                        else:
+                            inline_math_start = None
+                    column += 1
         if fence is not None:
             errors.append(f"unclosed code fence: {relative}")
+        if inline_math_start is not None:
+            errors.append(
+                "unbalanced inline-math delimiter: "
+                f"{relative}:{inline_math_start[0]}"
+            )
+        if display_math_open:
+            errors.append(f"unbalanced display-math delimiter: {relative}")
 
         outside_text = "\n".join(outside)
-        if outside_text.count("$$") % 2:
-            errors.append(f"unbalanced display-math delimiter: {relative}")
         if outside_text.count("<details") != outside_text.count("</details>"):
             errors.append(f"unbalanced details tag: {relative}")
         if outside_text.count("<summary") != outside_text.count("</summary>"):
@@ -83,6 +126,12 @@ def check_markdown_syntax() -> list[str]:
             expression = match.group(1) if match.group(1) is not None else match.group(2)
             if expression is None:
                 continue
+            if re.search(r"(?<!\\)[_^]\*", expression):
+                line_number = outside_text.count("\n", 0, match.start()) + 1
+                errors.append(
+                    "unsafe Markdown asterisk in LaTeX script; use _{\\ast} or ^{\\ast}: "
+                    f"{relative}:{line_number}"
+                )
             command = bare_math_commands.search(expression)
             if command:
                 line_number = outside_text.count("\n", 0, match.start()) + 1

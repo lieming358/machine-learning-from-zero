@@ -148,7 +148,7 @@ $$M_{ij}=\begin{cases}0,&j\le i,\\-\infty,&j>i,
 
 $$M_{KV}=2\times L\times T\times H_{kv}\times d_h\times b,$$
 
-其中 2 代表 K 与 V，$L$ 是层数，$T$ 是缓存 token 数，$b$ 是每元素字节数。
+其中 2 代表 K 与 V， $L$ 是层数， $T$ 是缓存 token 数， $b$ 是每元素字节数。
 
 ![Attention分数显存随上下文长度二次增长](../assets/transformer-context-cost.png)
 
@@ -188,13 +188,13 @@ RAG 在推理时检索外部文档，工具调用让模型请求计算器、数�
 $$W=W_0+\Delta W,
 \qquad \Delta W=\frac{\alpha}{r}BA,$$
 
-其中 $A\in\mathbb R^{r\times d_{in}}$、$B\in\mathbb R^{d_{out}\times r}$，$r$ 很小。可训练参数
+其中 $A\in\mathbb R^{r\times d_{in}}$、 $B\in\mathbb R^{d_{out}\times r}$， $r$ 很小。可训练参数
 从 $d_{out}d_{in}$ 降到 $r(d_{in}+d_{out})$。LoRA 减少梯度和优化器状态，不自动减少基础权重的
 推理成本；适配器合并、量化和多租户服务是另外的系统问题。
 
 ## 15.9 MoE：每个 token 只激活部分专家
 
-MoE 层含多个 MLP 专家，路由器为 token 计算分数并选择 top-$k$ 专家：
+MoE 层含多个 MLP 专家，路由器为 token 计算分数并选择 top-k 专家：
 
 $$g(x)=\operatorname{softmax}(W_gx),\qquad
 y=\sum_{e\in TopK(g)}g_e(x)E_e(x).$$
@@ -217,7 +217,7 @@ python code/chapter15/course_lab.py
 ```
 
 第一个脚本生成本章图片并检查 causal attention。第二个是课程实验，依次完成：构造右移标签、训练
-一个最小 bigram 下一 token 模型、执行 top-$p$ 生成、计算单头 causal attention，并比较全量矩阵
+一个最小 bigram 下一 token 模型、执行 top-p 生成、计算单头 causal attention，并比较全量矩阵
 与 LoRA 的参数量。典型输出中 loss 从约 1.95 降到 0.15，且生成出
 `<BOS> machine learning is fun <EOS>`。
 
@@ -229,16 +229,16 @@ bigram 模型不是 Transformer；这里故意把“语言模型训练循环”�
 
 - Greedy 每次选最大概率，确定但可能重复或局部最优。
 - Temperature 用 $z/\tau$ 控制分布尖锐度；不是事实性开关。
-- Top-$k$ 只保留概率最高的 $k$ 个 token。
-- Top-$p$ 保留累计概率达到 $p$ 的最小集合。
+- Top-k 只保留概率最高的 $k$ 个 token。
+- Top-p 保留累计概率达到 $p$ 的最小集合。
 - Beam search 保留多条高概率序列，适合某些受约束任务，但开放生成可能变得单调。
 
 比较解码必须固定模型和提示，报告任务质量、重复率、长度、延迟与多样性。采样随机性要求多次运行。
 
-### 一个 top-$p$ 数字例子
+### 一个 top-p 数字例子
 
-若下一 token 概率为 $[0.50,0.25,0.15,0.07,0.03]$，$p=0.8$ 时累加前三个得到 0.90，因此保留
-前三个并归一化为约 $[0.556,0.278,0.167]$。top-$k=2$ 则只保留前两个。temperature 在截断前
+若下一 token 概率为 $[0.50,0.25,0.15,0.07,0.03]$， $p=0.8$ 时累加前三个得到 0.90，因此保留
+前三个并归一化为约 $[0.556,0.278,0.167]$。top-k=2 则只保留前两个。temperature 在截断前
 改变概率；这些操作只改变抽样，不会修改模型参数。
 
 生成循环是：编码提示 → prefill 建立 KV cache → 从末位置 logits 采样 → 追加 token → 只对新
@@ -318,7 +318,7 @@ rank 增大提高适配容量，也增加参数、显存和过拟合风险；应
 - **perplexity 是什么？** 平均 token 负对数似然的指数，越低表示对评测文本分配概率越高。
 - **LoRA 节省什么？** 可训练参数、梯度和优化器状态；基础模型推理计算不必然减少。
 - **MoE 优势与代价？** 扩大总容量而保持稀疏激活，但引入路由、负载和通信问题。
-- **Top-$k$ 与 Top-$p$？** 固定候选数与按累计概率动态选择候选集合。
+- **Top-k 与 Top-p？** 固定候选数与按累计概率动态选择候选集合。
 - **SFT 与偏好优化？** 前者模仿目标回答，后者调整候选回答的相对偏好。
 - **长上下文主要瓶颈？** Attention/激活、KV cache、位置泛化和有效利用证据，而不只是最大长度参数。
 

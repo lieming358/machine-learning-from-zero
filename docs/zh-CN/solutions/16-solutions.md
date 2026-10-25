@@ -12,7 +12,7 @@ $D_{KL}(q(z\mid x)\|p(z\mid x))\ge0$。
 ## 2. 对角高斯 KL
 
 把高斯密度对数比取 $q$ 下期望，使用
-$\mathbb E_q z_j=\mu_j$、$\mathbb E_q(z_j-\mu_j)^2=\sigma_j^2$，得到
+$\mathbb E_q z_j=\mu_j$、 $\mathbb E_q(z_j-\mu_j)^2=\sigma_j^2$，得到
 $\frac12\sum_j(\mu_j^2+\sigma_j^2-\log\sigma_j^2-1)$。
 
 ## 3–4. 重参数化与 VAE 诊断

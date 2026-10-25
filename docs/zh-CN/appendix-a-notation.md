@@ -49,7 +49,7 @@ $$X\in\mathbb R^{m\times d},\qquad y\in\mathbb R^m.$$
 | $D$ | embedding/hidden 维度，出现时会与特征维度 $d$ 明确区分 |
 | $L$ | 网络层数或单样本损失，按上下文明确说明 |
 
-LLM 隐状态 $H\in\mathbb R^{B\times T\times D}$：$B$ 个序列，每个序列 $T$ 个 token，每个
+LLM 隐状态 $H\in\mathbb R^{B\times T\times D}$： $B$ 个序列，每个序列 $T$ 个 token，每个
 token 用 $D$ 维向量表示。
 
 ## A.4 模型与优化
@@ -65,7 +65,7 @@ token 用 $D$ 维向量表示。
 | $\lambda$ | 正则化强度 |
 | $\nabla_\theta J$ | $J$ 对全部参数的梯度 |
 | $\hat\theta$ | 估计/训练得到的参数 |
-| $\theta^*$ | 理论最优参数 |
+| $\theta^{\ast}$ | 理论最优参数 |
 
 帽子通常表示“估计”，星号通常表示“最优”。二者不自动相等：有限数据和有限优化只能得到估计。
 

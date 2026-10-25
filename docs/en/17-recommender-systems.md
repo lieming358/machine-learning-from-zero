@@ -84,7 +84,7 @@ python code/chapter17/course_lab.py
 
 The script creates exposure-biased implicit logs, trains factorization from scratch, and verifies objective reduction.
 The course lab additionally computes one neighborhood prediction, trains BPR matrix factorization, and evaluates
-held-out Recall@$5$ and NDCG@$5$ against a random baseline.
+held-out Recall@5 and NDCG@5 against a random baseline.
 
 For a concrete neighborhood example, suppose Wang rated two movies 5 and 1, while Li rated the same two movies 4 and
 1 and a third movie 2. Their similar rating pattern makes Li informative for Wang, so a similarity-weighted estimate
@@ -97,7 +97,7 @@ A user tower encodes history and context as $p_u$; an item tower encodes ID and 
 
 $$s(u,i)=f_\theta(u,context)^\top g_\phi(i).$$
 
-Item embeddings enter an offline ANN index. Online serving computes one user vector and retrieves top-$K$ candidates.
+Item embeddings enter an offline ANN index. Online serving computes one user vector and retrieves top-K candidates.
 This is structurally the same as semantic retrieval, but behavior positives and negatives are exposure-dependent. The
 point-product bottleneck enables speed but limits fine-grained query–item interaction, so two towers usually retrieve
 rather than make the final decision.
@@ -114,7 +114,7 @@ Multi-task gradients can conflict, so inspect each outcome and user segment.
 
 ## 17.7 Ranking metrics
 
-Recall@$K$ asks whether relevant items entered the candidate set. Precision@$K$ measures the relevant fraction. MRR
+Recall@K asks whether relevant items entered the candidate set. Precision@K measures the relevant fraction. MRR
 emphasizes the first relevant item. NDCG handles graded relevance and position:
 
 $$DCG@K=\sum_{r=1}^{K}\frac{2^{rel_r}-1}{\log_2(r+1)},

@@ -38,10 +38,10 @@ figure illustrates three regimes; it does not establish that degree five is univ
 
 ## 9.2 Bias, variance, and irreducible noise
 
-Suppose $y=f^*(x)+\varepsilon$, with zero-mean noise of variance $\sigma^2$. Under squared loss,
+Suppose $y=f^{\ast}(x)+\varepsilon$, with zero-mean noise of variance $\sigma^2$. Under squared loss,
 
 $$\mathbb E[(y-\hat f(x))^2]=\sigma^2+
-(\mathbb E\hat f(x)-f^*(x))^2+
+(\mathbb E\hat f(x)-f^{\ast}(x))^2+
 \mathbb E[(\hat f(x)-\mathbb E\hat f(x))^2].$$
 
 The terms are irreducible noise, squared bias, and variance. Add and subtract $\mathbb E\hat f(x)$, expand the

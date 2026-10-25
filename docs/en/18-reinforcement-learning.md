@@ -68,7 +68,7 @@ $$V^\pi(s)=\sum_a\pi(a\mid s)\sum_{s'}P(s'\mid s,a)
 
 The optimal recursion is
 
-$$V^*(s)=\max_a\sum_{s'}P(s'\mid s,a)[R(s,a,s')+\gamma V^*(s')].$$
+$$V^{\ast}(s)=\max_a\sum_{s'}P(s'\mid s,a)[R(s,a,s')+\gamma V^{\ast}(s')].$$
 
 Future consequences are not discarded; the value of the next state summarizes them recursively.
 

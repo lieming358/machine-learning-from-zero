@@ -5,7 +5,7 @@
 ## 1. 手算 PCA
 
 先验证每列和为零，再算 $S=X^\top X/m$（或明确使用 $m-1$）。解 $|S-\lambda I|=0$，取最大
-特征值对应单位向量 $w_1$，得 $z=Xw_1$。$w_1$ 整体变号仍是同一答案。
+特征值对应单位向量 $w_1$，得 $z=Xw_1$。 $w_1$ 整体变号仍是同一答案。
 
 ## 2. 两种目标等价
 
@@ -15,8 +15,8 @@ $\|x\|^2=\|ww^\top x\|^2+\|x-ww^\top x\|^2$。左侧固定，且第一项为 $(w
 
 ## 3. 薄 SVD 形状
 
-令 $r=\min(m,d)$，则 $U:m\times r$，$\Sigma:r\times r$，$V:r\times d$（写成
-$X=U\Sigma V^\top$ 时常记 $V:d\times r$），$W_k=V_{:,1:k}:d\times k$，$Z:m\times k$。
+令 $r=\min(m,d)$，则 $U:m\times r$， $\Sigma:r\times r$， $V:r\times d$（写成
+$X=U\Sigma V^\top$ 时常记 $V:d\times r$）， $W_k=V_{:,1:k}:d\times k$， $Z:m\times k$。
 
 ## 4. 缩放实验
 

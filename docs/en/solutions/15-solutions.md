@@ -17,6 +17,6 @@ optimization separates chosen from rejected behavior. LoRA uses $\Delta W=BA$ to
 
 ## 5–7. Decoding, MoE, and evaluation
 
-Temperature changes entropy and top-$k$/top-$p$ truncate support. MoE expands parameters while activating few experts,
+Temperature changes entropy and top-k/top-p truncate support. MoE expands parameters while activating few experts,
 requiring load balancing and capacity controls. Evaluate factuality, citation, safety, long context, TTFT, TPOT, cost,
 and contamination; perplexity alone cannot approve a model.

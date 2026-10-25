@@ -81,8 +81,8 @@ p(y=1\mid x)=\sigma(w^Tx+b).$$
 ![Sigmoid 将任意实数分数映射到概率](../assets/sigmoid-function.png)
 
 - $z=0\Rightarrow p=0.5$；
-- $z$ 很大且为正，$p$ 接近 1；
-- $z$ 很小且为负，$p$ 接近 0；
+- $z$ 很大且为正， $p$ 接近 1；
+- $z$ 很小且为负， $p$ 接近 0；
 - 输出永远在 $(0,1)$，不会真正等于端点。
 
 sigmoid 的导数为
@@ -98,7 +98,7 @@ $$\sigma'(z)=\sigma(z)(1-\sigma(z)).$$
 
 $$\log\frac{p}{1-p}=w^Tx+b.$$
 
-因此权重 $w_j$ 表示：其他特征不变时，$x_j$ 增加 1，log-odds 增加 $w_j$；odds 乘以
+因此权重 $w_j$ 表示：其他特征不变时， $x_j$ 增加 1，log-odds 增加 $w_j$；odds 乘以
 $e^{w_j}$。这比直接说“概率增加 $w_j$”准确，因为概率变化还取决于当前所在位置。
 
 ## 4.3 从最大似然推导交叉熵
@@ -112,7 +112,7 @@ $$p^{(i)}=\sigma(w^Tx^{(i)}+b).$$
 $$p(y^{(i)}\mid x^{(i)};w,b)
 =(p^{(i)})^{y^{(i)}}(1-p^{(i)})^{1-y^{(i)}}.$$
 
-验证两个情况：$y^{(i)}=1$ 时只剩 $p^{(i)}$；$y^{(i)}=0$ 时只剩 $1-p^{(i)}$。
+验证两个情况： $y^{(i)}=1$ 时只剩 $p^{(i)}$； $y^{(i)}=0$ 时只剩 $1-p^{(i)}$。
 
 若样本条件独立，全部数据的似然为
 
@@ -163,7 +163,7 @@ $$
 
 $$\frac{\partial J}{\partial b}=\frac1m\sum_i(p^{(i)}-y^{(i)}).$$
 
-形状检查：$X^T:[d,m]$，$p-y:[m]$，结果 $[d]$，与 $w$ 相同。
+形状检查： $X^T:[d,m]$， $p-y:[m]$，结果 $[d]$，与 $w$ 相同。
 
 如果 $y=1,p=0.2$，误差信号 $p-y=-0.8$，更新会提高对应 logit；如果 $y=0,p=0.9$，
 误差信号为 $0.9$，更新会降低 logit。
@@ -276,10 +276,10 @@ $$w\leftarrow w+\eta y^{(i)}x^{(i)},\qquad b\leftarrow b+\eta y^{(i)}.$$
 
 $$p(y;\eta)=b(y)\exp\left(\eta T(y)-a(\eta)\right),$$
 
-其中 $\eta$ 是自然参数，$T(y)$ 是充分统计量，$a(\eta)$ 负责归一化。GLM 有三部分：
+其中 $\eta$ 是自然参数， $T(y)$ 是充分统计量， $a(\eta)$ 负责归一化。GLM 有三部分：
 
 1. **随机部分**：选择指数族分布描述 $y$；
-2. **线性预测器**：$z=w^Tx+b$；
+2. **线性预测器**： $z=w^Tx+b$；
 3. **链接函数**：把 $\mathbb E[y\mid x]$ 与线性分数连接。
 
 | 目标数据 | 分布 | 链接 | 得到的模型 |
@@ -362,7 +362,7 @@ sigmoid 导数中的 $p(1-p)$ 与对数似然导数中的分母相消，得到 $
 
 完成后对照：[第 4 章提示与参考答案](solutions/04-solutions.md)。
 
-1. **手算**：$w=[1,-2]^T,b=0.5,x=[2,1]^T$，计算 $z,p$ 与阈值 0.5 下类别。
+1. **手算**： $w=[1,-2]^T,b=0.5,x=[2,1]^T$，计算 $z,p$ 与阈值 0.5 下类别。
 2. **推导**：从 Bernoulli 似然推导 BCE，并证明 $\partial\ell/\partial z=p-y$。
 3. **实验**：将阈值从 0.1 扫到 0.9，画 precision/recall/F1，按一种业务成本选阈值。
 4. **反例**：构造 XOR 数据，说明原始二维逻辑回归为什么失败；加入哪个特征可解决？
@@ -373,7 +373,7 @@ sigmoid 导数中的 $p(1-p)$ 与对数似然导数中的分母相消，得到 $
 
 - **为什么不用 MSE 做逻辑回归？** Bernoulli MLE 自然导出 BCE；其优化性质和概率解释更合适。
 - **逻辑回归是线性模型吗？** 决策边界对输入特征线性，概率对线性分数是非线性 sigmoid。
-- **odds 与概率关系？** odds=$p/(1-p)$，log-odds 是线性预测器。
+- **odds 与概率关系？** odds = $p/(1-p)$，log-odds 是线性预测器。
 - **多分类怎么做？** multinomial softmax 或 one-vs-rest。
 - **类别不平衡怎么办？** 先选合适指标，再考虑权重/采样/阈值，并校准真实先验。
 - **逻辑回归与朴素贝叶斯？** 前者判别式建模 $p(y\mid x)$；后者生成式建模 $p(x\mid y)p(y)$。
@@ -393,4 +393,4 @@ sigmoid 导数中的 $p(1-p)$ 与对数似然导数中的分母相消，得到 $
 - [CS229 Lecture Notes](https://cs229.stanford.edu/main_notes.pdf)
 - [scikit-learn LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
 
-[继续：从“直接建模 $p(y\mid x)$”转向“先建模数据怎样由类别生成”——第 5 章 →](05-generative-classifiers.md)
+[继续：从“直接建模 p(y | x)”转向“先建模数据怎样由类别生成”——第 5 章 →](05-generative-classifiers.md)

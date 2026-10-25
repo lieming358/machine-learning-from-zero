@@ -60,7 +60,7 @@ $R$ 很大。训练集既用于拟合参数又用于打分，就像让学生提�
 
 假设回归目标满足
 
-$$y=f^*(x)+\varepsilon,\qquad \mathbb E[\varepsilon\mid x]=0,
+$$y=f^{\ast}(x)+\varepsilon,\qquad \mathbb E[\varepsilon\mid x]=0,
 \quad \operatorname{Var}(\varepsilon\mid x)=\sigma^2.$$
 
 如果反复抽取训练集并训练得到 $\hat f$，在平方损失下，一个固定位置 $x$ 的期望预测误差可分解为
@@ -68,7 +68,7 @@ $$y=f^*(x)+\varepsilon,\qquad \mathbb E[\varepsilon\mid x]=0,
 $$
 \mathbb E[(y-\hat f(x))^2]
 =\underbrace{\sigma^2}_{\text{不可约噪声}}
-+\underbrace{(\mathbb E[\hat f(x)]-f^*(x))^2}_{\text{偏差平方}}
++\underbrace{(\mathbb E[\hat f(x)]-f^{\ast}(x))^2}_{\text{偏差平方}}
 +\underbrace{\mathbb E[(\hat f(x)-\mathbb E[\hat f(x)])^2]}_{\text{方差}}.
 $$
 
@@ -84,7 +84,7 @@ $\hat f-\mathbb E\hat f$ 的均值也为零。
 
 ## 9.3 交叉验证：让每个样本都有一次“模拟考试”
 
-一次验证集划分可能碰巧偏难或偏易。$K$ 折交叉验证把数据分成 $K$ 份；第 $k$ 轮用其中一份验证，
+一次验证集划分可能碰巧偏难或偏易。 $K$ 折交叉验证把数据分成 $K$ 份；第 $k$ 轮用其中一份验证，
 其余 $K-1$ 份训练，最后平均验证损失：
 
 $$CV_K(\lambda)=\frac1K\sum_{k=1}^{K}L_k(\lambda).$$
@@ -184,8 +184,8 @@ $$CV_K(\lambda)=\frac1K\sum_{k=1}^{K}L_k(\lambda).$$
 
 $$\min_\theta\ \hat R_m(\theta)+\lambda\Omega(\theta).$$
 
-- L2：$\Omega=\|\theta\|_2^2$，平滑缩小权重；与零均值高斯先验的 MAP 估计相联系。
-- L1：$\Omega=\|\theta\|_1$，常产生稀疏解；与 Laplace 先验相联系。
+- L2： $\Omega=\|\theta\|_2^2$，平滑缩小权重；与零均值高斯先验的 MAP 估计相联系。
+- L1： $\Omega=\|\theta\|_1$，常产生稀疏解；与 Laplace 先验相联系。
 - 限制树深、增大最小叶样本数：直接限制函数族容量。
 - Early stopping：在继续训练开始损害验证表现时停止，是一种隐式正则化。
 - 数据增强：规定输入发生合理变化时输出应保持稳定，把领域知识写进数据。
@@ -215,14 +215,14 @@ $\delta$ 更小，也需要更多数据。这是**上界**而非模型实际测�
 ### 把偏差—方差推导完整走一遍
 
 记 $\bar f(x)=\mathbb E_D[\hat f_D(x)]$，其中期望对随机训练集 $D$ 取。把
-$y=f^*(x)+\varepsilon$ 代入，并加减 $\bar f(x)$：
+$y=f^{\ast}(x)+\varepsilon$ 代入，并加减 $\bar f(x)$：
 
 $$
-y-\hat f_D=(f^*-\bar f)+(\bar f-\hat f_D)+\varepsilon.
+y-\hat f_D=(f^{\ast}-\bar f)+(\bar f-\hat f_D)+\varepsilon.
 $$
 
 平方后有三个平方项和三个交叉项。对数据集与噪声取期望时，
-$\mathbb E_D[\bar f-\hat f_D]=0$、$\mathbb E[\varepsilon\mid x]=0$，且训练集与测试噪声独立，
+$\mathbb E_D[\bar f-\hat f_D]=0$、 $\mathbb E[\varepsilon\mid x]=0$，且训练集与测试噪声独立，
 所以交叉项消失，留下噪声、偏差平方和方差。这个推导也指出了适用边界：若测试噪声与训练过程
 相关、损失不是平方损失，便不能原样套用这条等式。
 
@@ -266,7 +266,7 @@ python code/chapter09/learning_theory.py
 
 ## 9.10 复杂度、系统成本与失败诊断
 
-若有 $H$ 组超参数、$K$ 折交叉验证，每次训练成本为 $C$，粗略成本为 $O(HKC)$。随机搜索通常
+若有 $H$ 组超参数、 $K$ 折交叉验证，每次训练成本为 $C$，粗略成本为 $O(HKC)$。随机搜索通常
 比在无关维度上密集网格更有效；贝叶斯优化适合单次训练昂贵的场景，但也必须保留最终测试集。
 
 常见失败包括：先在全数据标准化再交叉验证、把同一用户拆到不同集合、只汇报最好一次随机种子、
@@ -338,7 +338,7 @@ union bound 先乘以候选数，解指数不等式时取对数，因此复杂�
 
 - **训练/验证/测试集分别做什么？** 训练参数、选择超参数、最后一次无偏近似泛化评估。
 - **偏差和方差是什么？** 偏差是平均预测与真实规律的系统差，方差是模型随训练集变化的波动。
-- **$K$ 折越大越好吗？** 不一定；训练偏差可能降低，但计算更贵、各折结果相关，方差也未必更小。
+- **交叉验证的 $K$ 越大越好吗？** 不一定；训练偏差可能降低，但计算更贵、各折结果相关，方差也未必更小。
 - **什么时候用 Group K-fold？** 同一实体有多条相关记录，且部署时要泛化到未见实体时。
 - **时间序列为什么不能随机打乱？** 会让未来信息进入训练，模拟的部署方向错误。
 - **L1 与 L2 如何影响模型？** L1 倾向稀疏，L2 平滑缩小；二者都需按验证表现选择强度。

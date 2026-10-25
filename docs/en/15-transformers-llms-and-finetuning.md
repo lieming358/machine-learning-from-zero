@@ -111,7 +111,7 @@ capacity drops and communication hotspots. Auxiliary balancing helps but can int
 
 ## 15.8 Decoding choices
 
-Greedy decoding is deterministic; temperature rescales logits; top-$k$ keeps a fixed number of candidates; top-$p$
+Greedy decoding is deterministic; temperature rescales logits; top-k keeps a fixed number of candidates; top-p
 keeps the smallest set reaching a probability mass; beam search retains several sequence hypotheses. Temperature is
 not a factuality control. Compare quality, repetition, diversity, length, and latency under fixed prompts and seeds.
 
@@ -127,7 +127,7 @@ Production tests should additionally check label shift, padding loss masks, chec
 behavior.
 
 The course lab prints shifted token pairs, runs causal attention with shape checks, trains a tiny bigram next-token
-model, samples with top-$p$, and compares LoRA parameter counts. The bigram model is deliberately not a Transformer:
+model, samples with top-p, and compares LoRA parameter counts. The bigram model is deliberately not a Transformer:
 it exposes the language-model training loop, while the attention exercise isolates the Transformer operator.
 
 Common failures are target leakage, repetitive decoding, inability to use distant evidence, catastrophic forgetting,
@@ -203,7 +203,7 @@ See [Chapter 15 solutions](solutions/15-solutions.md).
 - **Perplexity?** Exponential of mean token negative log-likelihood.
 - **What does LoRA save?** Trainable parameters, gradients, and optimizer state.
 - **MoE tradeoff?** Sparse active compute with routing, storage, and communication complexity.
-- **Top-$k$ versus top-$p$?** Fixed candidate count versus adaptive cumulative mass.
+- **Top-k versus top-p?** Fixed candidate count versus adaptive cumulative mass.
 - **SFT versus preference optimization?** Demonstration imitation versus relative behavior preference.
 
 ## Mastery checklist

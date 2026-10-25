@@ -21,7 +21,7 @@ $\epsilon$-greedy 不使用置信度；UCB 加不确定性 bonus；Thompson 从�
 ## 5. REINFORCE 与 baseline
 
 $\nabla p_\theta(\tau)=p_\theta(\tau)\nabla\log p_\theta(\tau)$ 得到 score-function 梯度。
-若 $b(s)$ 与动作无关，$\mathbb E_{a\sim\pi}[\nabla\log\pi(a\mid s)b(s)]=b(s)\nabla\sum_a\pi(a\mid s)=0$，
+若 $b(s)$ 与动作无关， $\mathbb E_{a\sim\pi}[\nabla\log\pi(a\mid s)b(s)]=b(s)\nabla\sum_a\pi(a\mid s)=0$，
 所以不改期望但可减方差。
 
 ## 6–7. PPO 与奖励审计

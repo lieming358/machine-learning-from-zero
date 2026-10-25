@@ -173,7 +173,7 @@ p(x^{(i)}\mid y^{(i)};\mu_0,\mu_1,\Sigma)
 
 这里两个概率是相乘关系；换行仅为排版。取对数后乘积变求和。令导数为零可得 MLE：
 
-先只看类别先验部分。记 $n_1=\sum_i y^{(i)}$、$n_0=m-n_1$：
+先只看类别先验部分。记 $n_1=\sum_i y^{(i)}$、 $n_0=m-n_1$：
 
 $$\ell_\phi=n_1\log\phi+n_0\log(1-\phi),$$
 
@@ -203,7 +203,7 @@ $$\hat\mu_c=
 $$\hat\Sigma=\frac1m\sum_{i=1}^m
 (x^{(i)}-\hat\mu_{y^{(i)}})(x^{(i)}-\hat\mu_{y^{(i)}})^T.$$
 
-直觉并不神秘：$hat\phi$ 是正类比例，$hat\mu_c$ 是该类样本均值，$hat\Sigma$ 是每个样本
+直觉并不神秘： $hat\phi$ 是正类比例， $hat\mu_c$ 是该类样本均值， $hat\Sigma$ 是每个样本
 相对自己类别中心的共同协方差。
 
 ### 为什么共享协方差会产生线性边界？
@@ -254,7 +254,7 @@ $$b=-\frac12\mu_1^T\Sigma^{-1}\mu_1
 ## 5.6 从连续特征走向文本：朴素贝叶斯为什么存在？
 
 邮件含有成千上万个词。直接估计所有词的联合分布几乎不可能：即使每个词只有“出现/未出现”
-两种状态，$V$ 个词也有 $2^V$ 种组合。
+两种状态， $V$ 个词也有 $2^V$ 种组合。
 
 朴素贝叶斯作出强假设：**给定类别后，各特征条件独立**。
 
@@ -271,7 +271,7 @@ $$p(x\mid y=c)=\prod_{j=1}^d p(x_j\mid y=c).$$
 | Multinomial NB | 第 $j$ 个词出现次数 | 词袋文本、计数数据 |
 | Gaussian NB | 第 $j$ 个连续特征 | 近似独立的连续测量 |
 
-本章代码实现 Multinomial NB。令词表大小为 $V$，$x_j^{(i)}$ 是文档 $i$ 中词 $j$ 的次数，
+本章代码实现 Multinomial NB。令词表大小为 $V$， $x_j^{(i)}$ 是文档 $i$ 中词 $j$ 的次数，
 $\theta_{cj}=p(\text{word}=j\mid y=c)$。分类分数是
 
 $$\log p(y=c\mid x)=\text{constant}
@@ -300,7 +300,7 @@ Laplace 平滑给每个词先加 $\alpha$ 个“虚拟计数”：
 $$\hat\theta_{cj}=\frac{N_{cj}+\alpha}
 {\sum_{k=1}^V N_{ck}+\alpha V}.$$
 
-$\alpha=1$ 是 add-one smoothing；$\alpha=0$ 退回 MLE。分母必须增加 $\alpha V$，否则概率
+$\alpha=1$ 是 add-one smoothing； $\alpha=0$ 退回 MLE。分母必须增加 $\alpha V$，否则概率
 之和不再为 1。
 
 ![MLE 的零概率与 Laplace 平滑后的词概率](../assets/laplace-smoothing-word-probabilities.png)
@@ -310,7 +310,7 @@ $\alpha=1$ 是 add-one smoothing；$\alpha=0$ 退回 MLE。分母必须增加 $\
 对 Dirichlet 参数和平滑常数的命名约定，使用前要先确认定义。
 
 > **为什么 $\alpha$ 不能无限大？** 过强平滑会让所有词概率接近 $1/V$，类别间证据被抹平，
-> 造成欠拟合。$\alpha$ 应在验证集上选择。
+> 造成欠拟合。 $\alpha$ 应在验证集上选择。
 
 ## 5.8 指数族：GDA、NB 与 GLM 为什么属于同一张地图？
 
@@ -318,7 +318,7 @@ $\alpha=1$ 是 add-one smoothing；$\alpha=0$ 退回 MLE。分母必须增加 $\
 
 $$p(y;\eta)=h(y)\exp\left(\eta^TT(y)-A(\eta)\right),$$
 
-其中 $\eta$ 是自然参数，$T(y)$ 是充分统计量，$A(\eta)$ 负责归一化。初学阶段不必背形式，
+其中 $\eta$ 是自然参数， $T(y)$ 是充分统计量， $A(\eta)$ 负责归一化。初学阶段不必背形式，
 只需抓住两个作用：
 
 1. Gaussian、Bernoulli、Multinomial、Poisson 等常见分布可用统一语言描述；
@@ -472,7 +472,7 @@ CS249r 视角：NB 只需计数和加法，适合低延迟、资源受限或流�
 
 ## 本章通关标准
 
-- [ ] 我能区分 $p(y\mid x)$、$p(x\mid y)$、$p(y)$ 和 $p(x,y)$。
+- [ ] 我能区分 $p(y\mid x)$、 $p(x\mid y)$、 $p(y)$ 和 $p(x,y)$。
 - [ ] 我能写出 GDA 的 $\phi,\mu_c,\Sigma$ MLE，并解释各自统计意义。
 - [ ] 我能说明共享协方差为什么产生线性边界，不同协方差为什么产生二次边界。
 - [ ] 我能从词频计数推导 Multinomial NB，并在对数域实现预测。

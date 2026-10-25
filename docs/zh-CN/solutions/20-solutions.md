@@ -10,7 +10,7 @@ $S=1/[(1-p)+p/s]$。即使 $s\to\infty$，总加速也不超过 $1/(1-p)$；因�
 ## 2. Roofline
 
 统计算子 FLOPs 与从主存/显存搬运字节，算 $I=FLOPs/bytes$；与机器平衡点
-$P_{peak}/B_{memory}$ 比较。$I$ 较小更可能带宽受限，但最终仍需 profiler 验证缓存和融合。
+$P_{peak}/B_{memory}$ 比较。 $I$ 较小更可能带宽受限，但最终仍需 profiler 验证缓存和融合。
 
 ## 3. 服务压测
 

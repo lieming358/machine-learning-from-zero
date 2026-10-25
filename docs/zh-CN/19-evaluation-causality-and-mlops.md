@@ -85,7 +85,7 @@ Brier 更差。这说明“分类排序好”不能代替概率可信。
 前置混杂 $U$，不应机械控制中介 $M$，也不应只在 $C=1$ 人群分析。DAG 的用途不是画漂亮箭头，
 而是公开识别假设，并指出哪些效应从现有数据根本不可识别。
 
-预测问题问“看到 $X=x$ 时 $Y$ 多大”，因果问题问“如果强制采取 $A=a$，$Y$ 会怎样”。写作
+预测问题问“看到 $X=x$ 时 $Y$ 多大”，因果问题问“如果强制采取 $A=a$， $Y$ 会怎样”。写作
 
 $$p(Y\mid A=a)\neq p(Y\mid do(A=a))$$
 
@@ -116,9 +116,9 @@ $$p(Y\mid A=a)\neq p(Y\mid do(A=a))$$
 
 ## 19.6 分布漂移：什么变了？
 
-- Covariate shift：$p(x)$ 变，$p(y\mid x)$ 相对稳定。
-- Label/prior shift：$p(y)$ 变。
-- Concept drift：$p(y\mid x)$ 变，最危险且常需新标签确认。
+- Covariate shift： $p(x)$ 变， $p(y\mid x)$ 相对稳定。
+- Label/prior shift： $p(y)$ 变。
+- Concept drift： $p(y\mid x)$ 变，最危险且常需新标签确认。
 - Data quality failure：类型、单位、缺失或管道本身坏了，不应都叫漂移。
 
 ![训练与当前特征分布发生变化](../assets/feature-drift.png)

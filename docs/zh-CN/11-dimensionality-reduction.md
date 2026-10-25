@@ -86,7 +86,7 @@ $$Sw=\lambda w.$$
 $$S=\frac14X^\top X=\begin{bmatrix}2.5&2\\2&2.5\end{bmatrix}.$$
 
 它的特征值为 $4.5$ 与 $0.5$，对应单位方向
-$w_1=(1,1)^\top/\sqrt2$、$w_2=(1,-1)^\top/\sqrt2$。第一点的一维坐标是
+$w_1=(1,1)^\top/\sqrt2$、 $w_2=(1,-1)^\top/\sqrt2$。第一点的一维坐标是
 $z^{(1)}=(-2,-1)w_1=-3/\sqrt2\approx-2.12$。只保留第一主成分时重构为
 $z^{(1)}w_1=(-1.5,-1.5)$，误差为 $(-0.5,0.5)$。
 
@@ -160,7 +160,7 @@ PCA 将所有方向的方差都看作要解释的信号。因子分析（FA）�
 $$x=\mu+\Lambda z+\epsilon,\qquad
 z\sim\mathcal N(0,I),\quad \epsilon\sim\mathcal N(0,\Psi),$$
 
-其中 $z\in\mathbb R^k$ 是潜因子，$\Lambda$ 是载荷矩阵，$\Psi$ 通常为对角矩阵，表示每个观测
+其中 $z\in\mathbb R^k$ 是潜因子， $\Lambda$ 是载荷矩阵， $\Psi$ 通常为对角矩阵，表示每个观测
 变量独有的噪声。因此
 
 $$\operatorname{Cov}(x)=\Lambda\Lambda^\top+\Psi.$$

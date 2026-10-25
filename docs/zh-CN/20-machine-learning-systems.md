@@ -101,7 +101,7 @@ batching 在解码步动态加入/移除序列，提高利用率，但调度、K
 - 流水线并行：不同层放不同设备，以 micro-batch 填流水线；存在 bubble。
 - ZeRO/FSDP：分片参数、梯度和优化器状态，按需聚合。
 
-通信量、互联拓扑和计算重叠决定扩展效率。$N$ 张卡吞吐不到 $N$ 倍很正常；应报告 scaling efficiency：
+通信量、互联拓扑和计算重叠决定扩展效率。 $N$ 张卡吞吐不到 $N$ 倍很正常；应报告 scaling efficiency：
 
 $$E_N=\frac{Throughput_N}{N\,Throughput_1}.$$
 

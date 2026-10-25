@@ -81,8 +81,8 @@ $$V^\pi(s)=\sum_a\pi(a\mid s)
 
 最优价值满足 Bellman optimality：
 
-$$V^*(s)=\max_a\sum_{s'}P(s'\mid s,a)
-[R(s,a,s')+\gamma V^*(s')].$$
+$$V^{\ast}(s)=\max_a\sum_{s'}P(s'\mid s,a)
+[R(s,a,s')+\gamma V^{\ast}(s')].$$
 
 这不是把未来“忽略”，而是用下一状态价值递归总结未来。
 
@@ -133,7 +133,7 @@ $$V(s_t)\leftarrow V(s_t)+\alpha\delta_t.$$
 
 这叫 bootstrapping：用估计更新估计，偏差更大但可在线、方差通常更小。
 
-用同一条三步轨迹对比会更直观。若奖励为 $[0,0,1]$、$\gamma=0.9$，从三个时刻看到的完整
+用同一条三步轨迹对比会更直观。若奖励为 $[0,0,1]$、 $\gamma=0.9$，从三个时刻看到的完整
 Monte Carlo 回报是 $[0.81,0.9,1]$。若当前下一状态价值估计为 $[0.4,0.7,0]$，一步 TD target
 则是 $[0.36,0.63,1]$。MC 等到结局后使用真实长回报；TD 不等待结局，但前两步目标依赖尚不准确的
 价值估计。二者不是谁永远更好，而是在偏差、方差和在线更新之间选择。
@@ -156,7 +156,7 @@ $Q$；DQN 用神经网络近似，并引入 replay buffer 打破相关性、targ
 函数近似、bootstrapping 与 off-policy 同时存在会导致不稳定，被称为 deadly triad。过估计还来自
 max 对噪声的偏好，Double DQN 分开选择与评价动作以缓解。
 
-SARSA 的 target 是 $r+\gamma Q(s',a')$，$a'$ 真由当前探索策略选择；Q-learning 用
+SARSA 的 target 是 $r+\gamma Q(s',a')$， $a'$ 真由当前探索策略选择；Q-learning 用
 $r+\gamma\max_{a'}Q(s',a')$。悬崖行走中，SARSA 会把探索时掉下悬崖的风险计入价值，可能学习
 更安全路线；Q-learning 学探索结束后的 greedy 最短路线。
 
