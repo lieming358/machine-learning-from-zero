@@ -22,8 +22,11 @@ def chapter_pages() -> list[Path]:
         pages.extend(
             path
             for path in folder.glob("[0-9][0-9]-*.md")
-            if 1 <= int(path.name[:2]) < 90
+            if 0 <= int(path.name[:2]) < 90
         )
+        notation = folder / "appendix-a-notation.md"
+        if notation.exists():
+            pages.append(notation)
     return sorted(pages)
 
 
