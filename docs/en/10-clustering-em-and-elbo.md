@@ -12,13 +12,13 @@ Gaussian mixtures, then derive EM for learning with unobserved variables.
 
 ```mermaid
 flowchart LR
-  A[Unlabeled X] --> B[k-means: hard groups]
-  B --> C[GMM: soft membership]
-  C --> D[Latent z]
-  D --> E[E-step: infer z]
-  E --> F[M-step: update parameters]
+  A["Unlabeled X"] --> B["k-means: hard groups"]
+  B --> C["GMM: soft membership"]
+  C --> D["Latent z"]
+  D --> E["E-step: infer z"]
+  E --> F["M-step: update parameters"]
   F --> E
-  F --> G[ELBO and modern latent models]
+  F --> G["ELBO and modern latent models"]
 ```
 
 ## 10.1 Why clustering?

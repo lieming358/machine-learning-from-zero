@@ -12,10 +12,10 @@ features. Backpropagation makes this practical by computing all parameter gradie
 
 ```mermaid
 flowchart LR
-  A[Input X] --> B[Linear Z1]
-  B --> C[Nonlinear A1]
-  C --> D[Logits Z2]
-  D --> E[Loss]
+  A["Input X"] --> B["Linear Z1"]
+  B --> C["Nonlinear A1"]
+  C --> D["Logits Z2"]
+  D --> E["Loss"]
   E -->|reverse chain rule| D
   D --> C
   C --> B

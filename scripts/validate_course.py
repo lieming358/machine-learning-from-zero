@@ -167,8 +167,10 @@ def check_markdown_syntax() -> list[str]:
 def check_mermaid_syntax() -> list[str]:
     """Catch node labels that GitHub's Mermaid parser treats as graph syntax."""
     errors: list[str] = []
-    unsafe_node = re.compile(r"\b[A-Za-z][A-Za-z0-9_]*\[([^\]\"]*[()|][^\]\"]*)\]")
-    for path in chapter_pages():
+    unquoted_node = re.compile(
+        r'\b[A-Za-z][A-Za-z0-9_]*(?:\[(?!")|\{(?!"))'
+    )
+    for path in ROOT.rglob("*.md"):
         relative = path.relative_to(ROOT)
         in_mermaid = False
         for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -178,9 +180,9 @@ def check_mermaid_syntax() -> list[str]:
             if in_mermaid and line.strip() == "```":
                 in_mermaid = False
                 continue
-            if in_mermaid and unsafe_node.search(line):
+            if in_mermaid and unquoted_node.search(line):
                 errors.append(
-                    "Mermaid node labels containing parentheses or pipes must be quoted: "
+                    "Mermaid node labels must be quoted for GitHub compatibility: "
                     f"{relative}:{line_number}"
                 )
     return errors

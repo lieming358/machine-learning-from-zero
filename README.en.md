@@ -43,17 +43,17 @@ the notes into a course rather than a formula list.
 
 ```mermaid
 flowchart LR
-  A[Problem & Data] --> B[Math]
-  B --> C[Linear Models]
-  C --> D[Probabilistic Models]
-  C --> E[Trees & Ensembles]
-  C --> F[Kernel Methods]
-  D --> G[Neural Networks]
-  E --> H[Recommenders]
-  G --> I[Transformers / LLMs]
-  H --> J[Evaluation & Deployment]
+  A["Problem & Data"] --> B["Math"]
+  B --> C["Linear Models"]
+  C --> D["Probabilistic Models"]
+  C --> E["Trees & Ensembles"]
+  C --> F["Kernel Methods"]
+  D --> G["Neural Networks"]
+  E --> H["Recommenders"]
+  G --> I["Transformers / LLMs"]
+  H --> J["Evaluation & Deployment"]
   I --> J
-  J --> K[CS249r: Efficiency & Systems]
+  J --> K["CS249r: Efficiency & Systems"]
 ```
 
 Every algorithm chapter uses the same learning chain: **intuition → formulation → derivation →

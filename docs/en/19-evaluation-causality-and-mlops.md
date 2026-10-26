@@ -13,14 +13,14 @@ decision definition and data contract through evaluation, causal boundaries, dep
 
 ```mermaid
 flowchart LR
-  A[Business decision] --> B[Label metric split]
-  B --> C[Data feature contract]
-  C --> D[Performance calibration slices]
-  D --> E[Prediction or causality]
-  E --> F[Versioned release]
-  F --> G[Shadow canary A-B]
-  G --> H[Data system quality monitoring]
-  H --> I[Alert rollback retrain]
+  A["Business decision"] --> B["Label metric split"]
+  B --> C["Data feature contract"]
+  C --> D["Performance calibration slices"]
+  D --> E["Prediction or causality"]
+  E --> F["Versioned release"]
+  F --> G["Shadow canary A-B"]
+  G --> H["Data system quality monitoring"]
+  H --> I["Alert rollback retrain"]
 ```
 
 ### Learning boundary

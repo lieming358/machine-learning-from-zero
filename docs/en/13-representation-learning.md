@@ -12,15 +12,15 @@ even without sharing a class ID. Representation learning makes task-relevant sim
 
 ```mermaid
 flowchart LR
-  A[Text/image/behavior] --> B[Encoder]
-  B --> C[Normalized embedding]
-  D[Positive pairs] --> E[Pull together]
-  F[Negatives] --> G[Push apart]
+  A["Text/image/behavior"] --> B["Encoder"]
+  B --> C["Normalized embedding"]
+  D["Positive pairs"] --> E["Pull together"]
+  F["Negatives"] --> G["Push apart"]
   C --> E
   C --> G
-  E --> H[Semantic space]
+  E --> H["Semantic space"]
   G --> H
-  H --> I[Retrieval/recommendation/RAG]
+  H --> I["Retrieval/recommendation/RAG"]
 ```
 
 ## 13.1 What should a representation preserve?

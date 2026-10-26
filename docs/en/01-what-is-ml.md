@@ -103,9 +103,9 @@ energy, and privacy.
 
 ```mermaid
 flowchart LR
-  Q[Define success] --> D[Audit data] --> S[Split]
-  S --> B[Baseline] --> T[Train] --> V[Validate]
-  V --> E[Test once] --> M[Monitor]
+  Q["Define success"] --> D["Audit data"] --> S["Split"]
+  S --> B["Baseline"] --> T["Train"] --> V["Validate"]
+  V --> E["Test once"] --> M["Monitor"]
   M -->|drift| D
 ```
 

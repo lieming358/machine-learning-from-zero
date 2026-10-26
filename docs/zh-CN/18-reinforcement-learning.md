@@ -15,15 +15,15 @@
 
 ```mermaid
 flowchart LR
-  A[动作改变未来数据] --> B[MDP定义状态/动作/奖励/转移]
-  B --> C[回报与折扣]
-  C --> D[Bellman递推]
-  D --> E[动态规划]
-  D --> F[TD/Q-learning]
-  F --> G[探索-利用]
-  C --> H[策略梯度]
-  H --> I[Actor-Critic/PPO]
-  I --> J[离线评估与RLHF边界]
+  A["动作改变未来数据"] --> B["MDP定义状态/动作/奖励/转移"]
+  B --> C["回报与折扣"]
+  C --> D["Bellman递推"]
+  D --> E["动态规划"]
+  D --> F["TD/Q-learning"]
+  F --> G["探索-利用"]
+  C --> H["策略梯度"]
+  H --> I["Actor-Critic/PPO"]
+  I --> J["离线评估与RLHF边界"]
 ```
 
 ### 本章学到什么程度？

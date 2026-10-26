@@ -14,14 +14,14 @@ defined, where the objective comes from, why sampling works, and what can fail.
 
 ```mermaid
 flowchart LR
-  A[Learn the data distribution] --> B[Latent variable z]
-  B --> C[Intractable marginal likelihood]
-  C --> D[Approximate posterior q]
-  D --> E[ELBO = reconstruction - KL]
-  A --> F[Add Gaussian noise]
-  F --> G[Predict noise or score]
-  G --> H[Iterative reverse sampling]
-  E --> I[Quality coverage control]
+  A["Learn the data distribution"] --> B["Latent variable z"]
+  B --> C["Intractable marginal likelihood"]
+  C --> D["Approximate posterior q"]
+  D --> E["ELBO = reconstruction - KL"]
+  A --> F["Add Gaussian noise"]
+  F --> G["Predict noise or score"]
+  G --> H["Iterative reverse sampling"]
+  E --> I["Quality coverage control"]
   H --> I
 ```
 

@@ -12,12 +12,12 @@ model: expected risk, bias and variance, cross-validation, learning curves, and 
 
 ```mermaid
 flowchart LR
-  A[Candidate models] --> B[Fit on training data]
-  B --> C[Cross-validation]
-  C --> D[Choose capacity]
-  D --> E[Refit]
-  E --> F[Use test set once]
-  F --> G[Monitor deployment shift]
+  A["Candidate models"] --> B["Fit on training data"]
+  B --> C["Cross-validation"]
+  C --> D["Choose capacity"]
+  D --> E["Refit"]
+  E --> F["Use test set once"]
+  F --> G["Monitor deployment shift"]
 ```
 
 ## 9.1 Why training error is not enough

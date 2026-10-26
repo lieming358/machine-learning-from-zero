@@ -13,14 +13,14 @@ research project whose baselines, ablations, error analysis, and reproducibility
 
 ```mermaid
 flowchart LR
-  A[New problem] --> B[Task data metric]
-  B --> C[Simple baseline]
-  C --> D[Mechanism hypothesis]
-  D --> E[Implementation checks]
-  E --> F[Fair main experiment]
-  F --> G[Ablation counterexample errors]
-  G --> H[System cost limitations]
-  H --> I[Reproduction defense transfer]
+  A["New problem"] --> B["Task data metric"]
+  B --> C["Simple baseline"]
+  C --> D["Mechanism hypothesis"]
+  D --> E["Implementation checks"]
+  E --> F["Fair main experiment"]
+  F --> G["Ablation counterexample errors"]
+  G --> H["System cost limitations"]
+  H --> I["Reproduction defense transfer"]
 ```
 
 ### Learning boundary

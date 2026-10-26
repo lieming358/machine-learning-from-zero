@@ -13,11 +13,11 @@ causes, and ICA seeks statistically independent sources.
 
 ```mermaid
 flowchart LR
-  A[High-dimensional X] --> B[Center/scale]
-  B --> C{What should be preserved?}
-  C -->|Variance/reconstruction| D[PCA]
-  C -->|Common latent factors| E[Factor analysis]
-  C -->|Independent sources| F[ICA]
+  A["High-dimensional X"] --> B["Center/scale"]
+  B --> C{"What should be preserved?"}
+  C -->|Variance/reconstruction| D["PCA"]
+  C -->|Common latent factors| E["Factor analysis"]
+  C -->|Independent sources| F["ICA"]
 ```
 
 ### Learning boundary

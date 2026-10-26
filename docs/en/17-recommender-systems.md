@@ -13,14 +13,14 @@ feedback. The central statistical difficulty is that logged data were chosen by 
 
 ```mermaid
 flowchart LR
-  A[Exposure and feedback logs] --> B[Unknown is not negative]
-  B --> C[Collaborative filtering]
-  C --> D[User item embeddings]
-  D --> E[Two-tower ANN retrieval]
-  E --> F[Multi-objective ranking]
-  F --> G[Diverse constrained re-ranking]
-  G --> H[Offline plus online evaluation]
-  H --> I[Bias and feedback loops]
+  A["Exposure and feedback logs"] --> B["Unknown is not negative"]
+  B --> C["Collaborative filtering"]
+  C --> D["User item embeddings"]
+  D --> E["Two-tower ANN retrieval"]
+  E --> F["Multi-objective ranking"]
+  F --> G["Diverse constrained re-ranking"]
+  G --> H["Offline plus online evaluation"]
+  H --> I["Bias and feedback loops"]
 ```
 
 ### Learning boundary

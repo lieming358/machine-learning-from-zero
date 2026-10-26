@@ -16,15 +16,15 @@ Attention 只定义“位置怎样交流”，还不是完整语言模型。要�
 
 ```mermaid
 flowchart LR
-  A[文本] --> B[tokenization]
-  B --> C[token+位置embedding]
-  C --> D[因果多头Attention]
-  D --> E[残差/归一化/MLP]
-  E --> F[词表logits]
-  F --> G[下一token交叉熵]
-  G --> H[预训练]
-  H --> I[SFT/偏好优化/LoRA]
-  I --> J[KV cache/量化/MoE服务]
+  A["文本"] --> B["tokenization"]
+  B --> C["token+位置embedding"]
+  C --> D["因果多头Attention"]
+  D --> E["残差/归一化/MLP"]
+  E --> F["词表logits"]
+  F --> G["下一token交叉熵"]
+  G --> H["预训练"]
+  H --> I["SFT/偏好优化/LoRA"]
+  I --> J["KV cache/量化/MoE服务"]
 ```
 
 ### 本章学到什么程度？

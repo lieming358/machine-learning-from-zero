@@ -13,15 +13,15 @@ reward, transition, and balance learning about unknown actions with exploiting c
 
 ```mermaid
 flowchart LR
-  A[Actions change future data] --> B[MDP]
-  B --> C[Return and discount]
-  C --> D[Bellman recursion]
-  D --> E[Dynamic programming]
-  D --> F[TD and Q-learning]
-  F --> G[Exploration]
-  C --> H[Policy gradient]
-  H --> I[Actor-Critic and PPO]
-  I --> J[Offline evaluation and RLHF]
+  A["Actions change future data"] --> B["MDP"]
+  B --> C["Return and discount"]
+  C --> D["Bellman recursion"]
+  D --> E["Dynamic programming"]
+  D --> F["TD and Q-learning"]
+  F --> G["Exploration"]
+  C --> H["Policy gradient"]
+  H --> I["Actor-Critic and PPO"]
+  I --> J["Offline evaluation and RLHF"]
 ```
 
 ### Learning boundary

@@ -12,15 +12,15 @@ path from text to next-token prediction, then to SFT, preference optimization, L
 
 ```mermaid
 flowchart LR
-  A[Text] --> B[Tokenizer]
-  B --> C[Token and position embeddings]
-  C --> D[Causal multi-head attention]
-  D --> E[Residual/norm/MLP]
-  E --> F[Vocabulary logits]
-  F --> G[Next-token cross-entropy]
-  G --> H[Pretraining]
-  H --> I[SFT/preference/LoRA]
-  I --> J[KV cache/quantization/MoE]
+  A["Text"] --> B["Tokenizer"]
+  B --> C["Token and position embeddings"]
+  C --> D["Causal multi-head attention"]
+  D --> E["Residual/norm/MLP"]
+  E --> F["Vocabulary logits"]
+  F --> G["Next-token cross-entropy"]
+  G --> H["Pretraining"]
+  H --> I["SFT/preference/LoRA"]
+  I --> J["KV cache/quantization/MoE"]
 ```
 
 ### Learning boundary

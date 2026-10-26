@@ -14,14 +14,14 @@ hardware, and product SLO as one constrained design problem.
 
 ```mermaid
 flowchart LR
-  A[Quality and SLO] --> B[End-to-end profile]
-  B --> C[Compute or bandwidth]
-  C --> D[Batch parallel fusion]
-  D --> E[Quantize prune distill]
-  E --> F[KV and memory]
-  F --> G[Scheduling and tail latency]
-  G --> H[Edge cloud energy]
-  H --> I[Fallback capacity cost]
+  A["Quality and SLO"] --> B["End-to-end profile"]
+  B --> C["Compute or bandwidth"]
+  C --> D["Batch parallel fusion"]
+  D --> E["Quantize prune distill"]
+  E --> F["KV and memory"]
+  F --> G["Scheduling and tail latency"]
+  G --> H["Edge cloud energy"]
+  H --> I["Fallback capacity cost"]
 ```
 
 ### Learning boundary

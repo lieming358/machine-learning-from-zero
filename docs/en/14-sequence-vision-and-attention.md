@@ -14,15 +14,15 @@ CNN, RNN, and LSTM sections each follow the full motivation → example → math
 
 ```mermaid
 flowchart LR
-  A[Structured input] --> B[Repeated local patterns]
-  B --> C[CNN shares kernels]
-  A --> D[Past changes future]
-  D --> E[RNN recurrent state]
-  E --> F[Vanilla RNN has long gradient paths]
-  F --> G[LSTM gates memory]
-  G --> H[Attention connects positions directly]
-  H --> I[Add position information]
-  I --> J[Compare quality and cost]
+  A["Structured input"] --> B["Repeated local patterns"]
+  B --> C["CNN shares kernels"]
+  A --> D["Past changes future"]
+  D --> E["RNN recurrent state"]
+  E --> F["Vanilla RNN has long gradient paths"]
+  F --> G["LSTM gates memory"]
+  G --> H["Attention connects positions directly"]
+  H --> I["Add position information"]
+  I --> J["Compare quality and cost"]
 ```
 
 ## 14.1 Why dense layers are not enough
