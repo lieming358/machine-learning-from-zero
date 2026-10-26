@@ -38,7 +38,7 @@ decoder block；能解释训练与生成为什么不同；能判断 SFT、LoRA�
 
 自回归语言模型把序列概率分解为
 
-$$p(x_{1:T})=\prod_{t=1}^{T}p(x_t\mid x_{<t}).$$
+$$p(x_{1:T})=\prod_{t=1}^{T}p(x_t\mid x_{1:t-1}).$$
 
 训练样本来自文本自身：给前缀预测真实下一个 token。对词表大小 $V$ 的 logits $z_t\in\mathbb R^V$，
 
