@@ -126,6 +126,12 @@ def check_markdown_syntax() -> list[str]:
             expression = match.group(1) if match.group(1) is not None else match.group(2)
             if expression is None:
                 continue
+            if re.search(r"\\operatorname\s*\{", expression):
+                line_number = outside_text.count("\n", 0, match.start()) + 1
+                errors.append(
+                    "GitHub rejects the \\operatorname macro; use \\mathrm instead: "
+                    f"{relative}:{line_number}"
+                )
             if re.search(r"(?<!\\)[_^]\*", expression):
                 line_number = outside_text.count("\n", 0, match.start()) + 1
                 errors.append(
@@ -155,6 +161,28 @@ def check_markdown_syntax() -> list[str]:
             if depth != 0:
                 line_number = outside_text.count("\n", 0, match.start()) + 1
                 errors.append(f"unbalanced LaTeX braces: {relative}:{line_number}")
+    return errors
+
+
+def check_mermaid_syntax() -> list[str]:
+    """Catch node labels that GitHub's Mermaid parser treats as graph syntax."""
+    errors: list[str] = []
+    unsafe_node = re.compile(r"\b[A-Za-z][A-Za-z0-9_]*\[([^\]\"]*[()|][^\]\"]*)\]")
+    for path in chapter_pages():
+        relative = path.relative_to(ROOT)
+        in_mermaid = False
+        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if line.strip() == "```mermaid":
+                in_mermaid = True
+                continue
+            if in_mermaid and line.strip() == "```":
+                in_mermaid = False
+                continue
+            if in_mermaid and unsafe_node.search(line):
+                errors.append(
+                    "Mermaid node labels containing parentheses or pipes must be quoted: "
+                    f"{relative}:{line_number}"
+                )
     return errors
 
 
@@ -356,6 +384,7 @@ def main() -> None:
     checks = [
         ("links", check_local_links),
         ("Markdown and math syntax", check_markdown_syntax),
+        ("Mermaid syntax", check_mermaid_syntax),
         ("bilingual pages", check_bilingual_pairs),
         ("notation", check_notation),
         ("LaTeX escapes", check_latex_escapes),

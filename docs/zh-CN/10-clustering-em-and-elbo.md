@@ -113,7 +113,7 @@ k-means 偏好大小与密度相近、近似球形且用欧氏距离可分的簇
 
 GMM 假设先抽取隐含簇 $z$，再从该簇的高斯分布生成 $x$：
 
-$$z\sim\operatorname{Categorical}(\pi_1,\ldots,\pi_K),\qquad
+$$z\sim\mathrm{Categorical}(\pi_1,\ldots,\pi_K),\qquad
 x\mid z=k\sim\mathcal N(\mu_k,\Sigma_k).$$
 
 因此边缘密度为
@@ -177,7 +177,7 @@ $N_1=N_2=1$，M 步得到 $\mu_1\approx1.036$、 $\mu_2\approx2.964$：中心向
 
 数值实现不能直接计算许多极小密度再相加。应在 log 空间用
 
-$$\operatorname{logsumexp}(a_1,\ldots,a_K)=a_{max}+\log\sum_k e^{a_k-a_{max}}$$
+$$\mathrm{logsumexp}(a_1,\ldots,a_K)=a_{max}+\log\sum_k e^{a_k-a_{max}}$$
 
 稳定计算分母。协方差还要加 $\epsilon I$，否则某成分只“抓住”一个点时，方差可趋近 0、似然趋向
 无穷，这不是学到完美规律，而是最大似然的退化解。

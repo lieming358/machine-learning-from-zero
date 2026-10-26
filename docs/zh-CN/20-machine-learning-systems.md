@@ -119,7 +119,7 @@ $w=0.73$ 被量化为 $q=round(3.65)=4$，反量化为 0.8，误差 0.07。per-c
 对称均匀权重量化示意：
 
 $$s=\frac{\max|w|}{2^{b-1}-1},\qquad
-q=\operatorname{clip}(\operatorname{round}(w/s),-q_{max},q_{max}),
+q=\mathrm{clip}(\mathrm{round}(w/s),-q_{max},q_{max}),
 \qquad \hat w=sq.$$
 
 ![量化位宽对权重误差与模型大小的影响](../assets/quantization-quality-size.png)

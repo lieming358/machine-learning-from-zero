@@ -30,7 +30,7 @@ failure boundaries, but do not treat full optimizer derivations as course requir
 
 Center $X\in\mathbb R^{m\times d}$ as $X_c=X-\mathbf1\mu^\top$. For a unit direction $w$,
 
-$$\operatorname{Var}(X_cw)=w^\top\left(\frac1mX_c^\top X_c\right)w=w^\top Sw.$$
+$$\mathrm{Var}(X_cw)=w^\top\left(\frac1mX_c^\top X_c\right)w=w^\top Sw.$$
 
 Maximize $w^\top Sw$ subject to $w^\top w=1$. The Lagrange condition is
 
@@ -95,7 +95,7 @@ $$x=\mu+\Lambda z+\epsilon,\qquad z\sim\mathcal N(0,I),\quad
 
 usually with diagonal $\Psi$. Hence
 
-$$\operatorname{Cov}(x)=\Lambda\Lambda^\top+\Psi.$$
+$$\mathrm{Cov}(x)=\Lambda\Lambda^\top+\Psi.$$
 
 PCA explains total variance with an orthogonal projection. Factor analysis is a probabilistic model separating common
 factor covariance from feature-specific noise. A named factor is an interpretation, not automatically a discovered

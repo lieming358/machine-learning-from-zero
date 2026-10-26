@@ -186,14 +186,14 @@ $$\text{relative error}=\frac{\|g-g^{num}\|_2}{\|g\|_2+\|g^{num}\|_2+10^{-12}}.$
 
 若每层输入方差不断缩小，信号和梯度会消失；若不断放大，会爆炸。Xavier 初始化常用于 tanh：
 
-$$\operatorname{Var}(W)\approx\frac{1}{n_{in}},$$
+$$\mathrm{Var}(W)\approx\frac{1}{n_{in}},$$
 
 He 初始化常用于 ReLU：
 
-$$\operatorname{Var}(W)\approx\frac{2}{n_{in}}.$$
+$$\mathrm{Var}(W)\approx\frac{2}{n_{in}}.$$
 
 这个系数来自方差传播。若输入近似独立、零均值， $z=\sum_jw_jx_j$ 有
-$\operatorname{Var}(z)\approx n_{in}\operatorname{Var}(w)\operatorname{Var}(x)$。
+$\mathrm{Var}(z)\approx n_{in}\mathrm{Var}(w)\mathrm{Var}(x)$。
 让前后方差相近便得到 Xavier 的 $1/n_{in}$；ReLU 约丢掉一半激活能量，因此用 2 补偿。
 
 ![不同初始化下信号方差随网络深度的变化](../assets/initialization-signal-flow.png)

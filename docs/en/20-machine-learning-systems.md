@@ -99,7 +99,7 @@ Mixed-precision training keeps sensitive accumulation in higher precision. Infer
 uniform weight quantization uses
 
 $$s=\frac{\max|w|}{2^{b-1}-1},\qquad
-q=\operatorname{clip}(\operatorname{round}(w/s),-q_{max},q_{max}),\qquad \hat w=sq.$$
+q=\mathrm{clip}(\mathrm{round}(w/s),-q_{max},q_{max}),\qquad \hat w=sq.$$
 
 ![Quantization bit width trades error against model size](../assets/quantization-quality-size.png)
 

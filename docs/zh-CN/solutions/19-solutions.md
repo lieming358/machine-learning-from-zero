@@ -4,7 +4,7 @@
 
 ## 1. 相同 AUC、不同校准
 
-对一组概率 $p$ 应用严格单调变换，如 $p'=\sigma(c\operatorname{logit}p)$。排序不变，所以 AUC 不变；
+对一组概率 $p$ 应用严格单调变换，如 $p'=\sigma(c\mathrm{logit}p)$。排序不变，所以 AUC 不变；
 $c>1$ 会过度自信并改变 Brier。用独立分箱画平均预测与真实频率，避免在同一数据拟合和评价校准器。
 
 ## 2. Cluster bootstrap

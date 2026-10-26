@@ -42,7 +42,7 @@ $$p(x_{1:T})=\prod_{t=1}^{T}p(x_t\mid x_{<t}).$$
 
 训练样本来自文本自身：给前缀预测真实下一个 token。对词表大小 $V$ 的 logits $z_t\in\mathbb R^V$，
 
-$$p_t=\operatorname{softmax}(z_t),\qquad
+$$p_t=\mathrm{softmax}(z_t),\qquad
 L=-\frac1{N}\sum_{t\in\text{valid tokens}}\log p_t[x_t].$$
 
 这里 $N$ 是非 padding 目标 token 数。最小化平均负对数似然等价于最大化训练文本似然。它使模型
@@ -89,9 +89,9 @@ token ID 通过 embedding 表查成 $X\in\mathbb R^{T\times d}$，再加入或�
 
 常见 Pre-LN block 可写为
 
-$$H'=H+\operatorname{MHA}(\operatorname{LN}(H)),$$
+$$H'=H+\mathrm{MHA}(\mathrm{LN}(H)),$$
 
-$$H_{next}=H'+\operatorname{MLP}(\operatorname{LN}(H')).$$
+$$H_{next}=H'+\mathrm{MLP}(\mathrm{LN}(H')).$$
 
 残差提供短梯度路径；LayerNorm 对每个 token 的特征维归一化，不依赖 batch 统计；MLP 通常扩张
 到约 $4d$ 或采用 gated 变体后再投影回来。
@@ -124,7 +124,7 @@ $\rightarrow[B,T,d]$。MLP 只在最后一维变换，不混合 token；跨位�
 $$M_{ij}=\begin{cases}0,&j\le i,\\-\infty,&j>i,
 \end{cases}$$
 
-再计算 $\operatorname{softmax}(QK^\top/\sqrt{d_k}+M)$，未来位置概率为零。
+再计算 $\mathrm{softmax}(QK^\top/\sqrt{d_k}+M)$，未来位置概率为零。
 
 ![因果mask及其作用后的Attention矩阵](../assets/transformer-causal-mask.png)
 
@@ -196,7 +196,7 @@ $$W=W_0+\Delta W,
 
 MoE 层含多个 MLP 专家，路由器为 token 计算分数并选择 top-k 专家：
 
-$$g(x)=\operatorname{softmax}(W_gx),\qquad
+$$g(x)=\mathrm{softmax}(W_gx),\qquad
 y=\sum_{e\in TopK(g)}g_e(x)E_e(x).$$
 
 总参数可增大而单 token 激活计算较少，但路由不均会让少数专家拥堵、其余专家闲置。

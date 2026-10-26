@@ -16,7 +16,7 @@ Read the red star as the new query, the colored dots as labeled history, the bla
 selected neighbors, and the dashed segments as measured distances. The title reports the vote. The
 background is deliberately absent: this figure explains one prediction before showing a full boundary.
 
-$$d(x,z)=\|x-z\|_2,\qquad \hat y=\operatorname{mode}\{y^{(i)}:i\in\mathcal N_k(x)\}.$$
+$$d(x,z)=\|x-z\|_2,\qquad \hat y=\mathrm{mode}\{y^{(i)}:i\in\mathcal N_k(x)\}.$$
 
 ![k controls boundary complexity](../assets/knn-k-boundaries.png)
 

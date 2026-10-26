@@ -155,7 +155,7 @@ $$r_t(\theta)=\frac{\pi_\theta(a_t\mid s_t)}{\pi_{old}(a_t\mid s_t)}$$
 and clipped surrogate
 
 $$L^{clip}=\mathbb E_t\left[
-\min(r_tA_t,\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)A_t)
+\min(r_tA_t,\mathrm{clip}(r_t,1-\epsilon,1+\epsilon)A_t)
 \right].$$
 
 ![PPO clipping limits incentives for large probability changes](../assets/ppo-clipped-objective.png)

@@ -58,7 +58,7 @@ $$X_c=X-\mathbf 1\mu^\top,\qquad
 
 选择单位方向 $w$，样本投影为 $z=X_cw$。投影方差是
 
-$$\operatorname{Var}(z)=\frac1m z^\top z
+$$\mathrm{Var}(z)=\frac1m z^\top z
 =w^\top\left(\frac1mX_c^\top X_c\right)w=w^\top S w,$$
 
 其中 $S$ 是协方差矩阵。PCA 第一主成分解
@@ -163,7 +163,7 @@ z\sim\mathcal N(0,I),\quad \epsilon\sim\mathcal N(0,\Psi),$$
 其中 $z\in\mathbb R^k$ 是潜因子， $\Lambda$ 是载荷矩阵， $\Psi$ 通常为对角矩阵，表示每个观测
 变量独有的噪声。因此
 
-$$\operatorname{Cov}(x)=\Lambda\Lambda^\top+\Psi.$$
+$$\mathrm{Cov}(x)=\Lambda\Lambda^\top+\Psi.$$
 
 例如多道考试题都受“数学能力”这一共同因子影响，同时每道题还有表述、运算失误等特有噪声。FA
 试图区分共同协方差与特有方差；PCA 只寻找重构总体方差最好的正交子空间。

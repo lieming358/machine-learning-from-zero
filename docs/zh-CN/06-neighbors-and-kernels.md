@@ -70,7 +70,7 @@ $$d(x,x^{(i)})=\sqrt{\sum_{j=1}^d(x_j-x_j^{(i)})^2}.$$
 
 分类可写为
 
-$$\hat y=\operatorname{mode}\{y^{(i)}:i\in\mathcal N_k(x)\}.$$
+$$\hat y=\mathrm{mode}\{y^{(i)}:i\in\mathcal N_k(x)\}.$$
 
 二分类概率常用邻居正类比例近似，但它并不自动是良好校准概率。
 

@@ -4,7 +4,7 @@
 
 ## 1. Same AUC, different calibration
 
-Apply a strictly monotone transform such as $p'=\sigma(c\operatorname{logit}p)$. Ranking and AUC remain, while $c>1$
+Apply a strictly monotone transform such as $p'=\sigma(c\mathrm{logit}p)$. Ranking and AUC remain, while $c>1$
 creates overconfidence and changes Brier score. Fit calibration separately from final reliability evaluation.
 
 ## 2. Cluster bootstrap

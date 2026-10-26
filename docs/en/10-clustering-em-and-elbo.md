@@ -63,7 +63,7 @@ business usefulness. Stability under resampling, interpretability, and downstrea
 
 A GMM generates a latent component and then an observation:
 
-$$z\sim\operatorname{Categorical}(\pi),\qquad x\mid z=k\sim\mathcal N(\mu_k,\Sigma_k),$$
+$$z\sim\mathrm{Categorical}(\pi),\qquad x\mid z=k\sim\mathcal N(\mu_k,\Sigma_k),$$
 
 $$p(x)=\sum_{k=1}^{K}\pi_k\mathcal N(x;\mu_k,\Sigma_k).$$
 

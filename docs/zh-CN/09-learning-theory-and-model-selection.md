@@ -61,7 +61,7 @@ $R$ 很大。训练集既用于拟合参数又用于打分，就像让学生提�
 假设回归目标满足
 
 $$y=f^{\ast}(x)+\varepsilon,\qquad \mathbb E[\varepsilon\mid x]=0,
-\quad \operatorname{Var}(\varepsilon\mid x)=\sigma^2.$$
+\quad \mathrm{Var}(\varepsilon\mid x)=\sigma^2.$$
 
 如果反复抽取训练集并训练得到 $\hat f$，在平方损失下，一个固定位置 $x$ 的期望预测误差可分解为
 

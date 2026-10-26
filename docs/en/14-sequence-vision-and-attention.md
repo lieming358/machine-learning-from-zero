@@ -179,7 +179,7 @@ $$\frac{\partial L}{\partial W_h}
 Long-range state derivatives contain
 
 $$\frac{\partial h_T}{\partial h_t}
-=\prod_{k=t+1}^{T}\operatorname{diag}(1-h_k^2)W_h.$$
+=\prod_{k=t+1}^{T}\mathrm{diag}(1-h_k^2)W_h.$$
 
 ![Repeated recurrence can erase or amplify a long-range gradient](../assets/rnn-gradient-memory.png)
 
@@ -272,7 +272,7 @@ For $X:T\times d_{model}$,
 
 $$Q=XW_Q,\qquad K=XW_K,\qquad V=XW_V,$$
 
-$$A=\operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+M\right),
+$$A=\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+M\right),
 \qquad O=AV.$$
 
 Row $i$ of $A$ states how query position $i$ weights value positions. Scaling prevents dot-product variance from
@@ -286,7 +286,7 @@ explanation of the final prediction.
 
 Multi-head attention concatenates several projected relations:
 
-$$\operatorname{MHA}(X)=\operatorname{Concat}(head_1,\ldots,head_H)W_O.$$
+$$\mathrm{MHA}(X)=\mathrm{Concat}(head_1,\ldots,head_H)W_O.$$
 
 Pure self-attention is permutation equivariant, so absolute, relative, or rotary position information must be added.
 

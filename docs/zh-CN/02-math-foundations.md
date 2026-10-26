@@ -289,9 +289,9 @@ BatchNorm/LayerNorm 则围绕激活的统计量稳定训练。
 
 | 分布 | 用途 | AI 连接 |
 |---|---|---|
-| $\operatorname{Bernoulli}(p)$ | 二分类 | 点击/不点击 |
-| $\operatorname{Categorical}(p)$ | 多分类 | 下一个 token |
-| $\operatorname{Gaussian}(\mu,\sigma^2)$ | 连续噪声 | 回归、扩散模型加噪 |
+| $\mathrm{Bernoulli}(p)$ | 二分类 | 点击/不点击 |
+| $\mathrm{Categorical}(p)$ | 多分类 | 下一个 token |
+| $\mathrm{Gaussian}(\mu,\sigma^2)$ | 连续噪声 | 回归、扩散模型加噪 |
 | Uniform | 等可能采样 | 初始化、随机探索 |
 
 ### 独立、条件独立与 i.i.d.

@@ -367,7 +367,7 @@ $$\frac{\partial L}{\partial W_h}
 
 $$\frac{\partial h_T}{\partial h_t}
 =\prod_{k=t+1}^{T}
-\underbrace{\operatorname{diag}(1-h_k^2)W_h}_{J_k}.$$
+\underbrace{\mathrm{diag}(1-h_k^2)W_h}_{J_k}.$$
 
 这是许多 Jacobian 的乘积。如果其主导尺度反复小于 1，梯度消失；反复大于 1，梯度爆炸。tanh
 饱和时 $1-h_k^2$ 接近 0，也会加重消失。
@@ -565,7 +565,7 @@ $$Q=XW_Q,\qquad K=XW_K,\qquad V=XW_V.$$
 
 缩放点积 Attention 为
 
-$$A=\operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+M\right),
+$$A=\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+M\right),
 \qquad O=AV.$$
 
 第 $i$ 行 $A_{ij}$ 表示查询位置 $i$ 从位置 $j$ 读取多少信息；每行非负且和为 1。除以
@@ -582,7 +582,7 @@ $\sqrt{d_k}$ 是为了避免维度增大时点积方差过大，使 softmax 过�
 
 单个头只生成一种相似度关系。多头对不同投影子空间并行计算：
 
-$$\operatorname{MHA}(X)=\operatorname{Concat}(head_1,\ldots,head_H)W_O.$$
+$$\mathrm{MHA}(X)=\mathrm{Concat}(head_1,\ldots,head_H)W_O.$$
 
 不同头可能关注局部搭配、指代或位置模式，但头的语义并非人工预先指定，也可能存在冗余。
 

@@ -50,9 +50,9 @@ Masked attention communicates across allowed prefix positions. Residual paths pr
 route, LayerNorm stabilizes per-token feature scale, and the MLP performs nonlinear token-wise computation. A common
 Pre-LN form is
 
-$$H'=H+\operatorname{MHA}(\operatorname{LN}(H)),$$
+$$H'=H+\mathrm{MHA}(\mathrm{LN}(H)),$$
 
-$$H_{next}=H'+\operatorname{MLP}(\operatorname{LN}(H')).$$
+$$H_{next}=H'+\mathrm{MLP}(\mathrm{LN}(H')).$$
 
 If MLP width is about $4d$, its two matrices have roughly $8d^2$ parameters, often more than Q/K/V/O projections.
 
@@ -99,7 +99,7 @@ $r(d_{in}+d_{out})$. LoRA saves gradients and optimizer state; it does not autom
 
 ## 15.7 Sparse mixture of experts
 
-$$g(x)=\operatorname{softmax}(W_gx),\qquad
+$$g(x)=\mathrm{softmax}(W_gx),\qquad
 y=\sum_{e\in TopK(g)}g_e(x)E_e(x).$$
 
 Only selected experts process each token, increasing total capacity without activating all parameters.
