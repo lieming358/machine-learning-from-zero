@@ -83,7 +83,9 @@ $$Sw=\lambda w.$$
 
 取中心化后的四个点 $(-2,-1),(-1,-2),(1,2),(2,1)$。用 $1/m$ 定义协方差：
 
-$$S=\frac14X^\top X=\begin{bmatrix}2.5&2\\2&2.5\end{bmatrix}.$$
+```math
+S=\frac14X^\top X=\begin{bmatrix}2.5&2\\2&2.5\end{bmatrix}.
+```
 
 它的特征值为 $4.5$ 与 $0.5$，对应单位方向
 $w_1=(1,1)^\top/\sqrt2$、 $w_2=(1,-1)^\top/\sqrt2$。第一点的一维坐标是

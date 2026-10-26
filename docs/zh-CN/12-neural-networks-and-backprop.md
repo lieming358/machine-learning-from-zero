@@ -105,8 +105,10 @@ $W_3\in\mathbb R^{3\times1}$。隐藏层不是在“投票”，而是在逐层�
 
 取 $x=[1,2]$，隐藏层有两个单元：
 
-$$W_1=\begin{bmatrix}0.1&-0.2\\0.3&0.4\end{bmatrix},\quad
-b_1=[0,0],\quad W_2=\begin{bmatrix}0.5\\-0.5\end{bmatrix},\quad b_2=0.$$
+```math
+W_1=\begin{bmatrix}0.1&-0.2\\0.3&0.4\end{bmatrix},\quad
+b_1=[0,0],\quad W_2=\begin{bmatrix}0.5\\-0.5\end{bmatrix},\quad b_2=0.
+```
 
 则 $Z_1=xW_1=[0.7,0.6]$， $A_1=\tanh(Z_1)\approx[0.604,0.537]$，
 $Z_2\approx0.0335$， $p=\sigma(Z_2)\approx0.508$。若标签 $y=1$，损失
@@ -139,8 +141,10 @@ $dW_2=A_1^\top dZ_2\approx[-0.297,-0.264]^\top$，
 $dA_1=dZ_2W_2^\top\approx[-0.246,0.246]$。再乘 tanh 的局部导数，得到
 $dZ_1\approx[-0.156,0.175]$，进而
 
-$$dW_1=x^\top dZ_1=
-\begin{bmatrix}-0.156&0.175\\-0.312&0.350\end{bmatrix}.$$
+```math
+dW_1=x^\top dZ_1=
+\begin{bmatrix}-0.156&0.175\\-0.312&0.350\end{bmatrix}.
+```
 
 每个梯度的形状都与对应参数一致。用学习率 $0.1$ 更新时，
 $W_{2,1}\leftarrow0.5-0.1(-0.297)=0.5297$，它增大了正向激活对正类 logit 的贡献。

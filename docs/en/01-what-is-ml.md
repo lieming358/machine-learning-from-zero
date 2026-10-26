@@ -46,8 +46,10 @@ not a power. Subscript $j$ means “feature $j$.” Thus $x_2^{(3)}=18$ means fe
 
 Stacking examples as rows gives the data matrix:
 
-$$X=\begin{bmatrix}28&5&1\\45&10&0\\72&18&1\\96&7&0\end{bmatrix}
-\in\mathbb R^{4\times3}.$$
+```math
+X=\begin{bmatrix}28&5&1\\45&10&0\\72&18&1\\96&7&0\end{bmatrix}
+\in\mathbb R^{4\times3}.
+```
 
 ![Rows, columns, and one element of the data matrix](../assets/dataset-matrix-anatomy.png)
 

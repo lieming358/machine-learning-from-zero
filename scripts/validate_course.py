@@ -129,6 +129,13 @@ def check_markdown_syntax() -> list[str]:
             expression = match.group(1) if match.group(1) is not None else match.group(2)
             if expression is None:
                 continue
+            if r"\\" in expression:
+                line_number = outside_text.count("\n", 0, match.start()) + 1
+                errors.append(
+                    "LaTeX row breaks inside dollar-delimited math are unstable on GitHub; "
+                    "use a fenced ```math block: "
+                    f"{relative}:{line_number}"
+                )
             if re.search(r"\\operatorname\s*\{", expression):
                 line_number = outside_text.count("\n", 0, match.start()) + 1
                 errors.append(

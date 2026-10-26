@@ -93,7 +93,7 @@ $$V^{\ast}(s)=\max_a\sum_{s'}P(s'\mid s,a)
 
 $$V(R)=0.8\times4+0.2\times(-2)=2.8,$$
 
-$$Q(S,safe)=2,\\qquad Q(S,risky)=0+0.9\times2.8=2.52.$$
+$$Q(S,safe)=2,\qquad Q(S,risky)=0+0.9\times2.8=2.52.$$
 
 只看即时奖励会选 safe，考虑未来则选 risky；失败概率或折扣变化时结论可能反转。价值函数是把
 未来奖励分布压缩成期望，不是模型凭空给出的“好坏分”。

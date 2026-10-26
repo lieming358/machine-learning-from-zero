@@ -58,7 +58,9 @@ If MLP width is about $4d$, its two matrices have roughly $8d^2$ parameters, oft
 
 ## 15.3 Causal masking and leakage
 
-$$M_{ij}=\begin{cases}0,&j\le i,\\-\infty,&j>i.\end{cases}$$
+```math
+M_{ij}=\begin{cases}0,&j\le i,\\-\infty,&j>i.\end{cases}
+```
 
 Adding $M$ before softmax gives zero probability to future keys.
 

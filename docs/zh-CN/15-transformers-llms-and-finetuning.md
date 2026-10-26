@@ -121,8 +121,10 @@ $\rightarrow[B,T,d]$。MLP 只在最后一维变换，不混合 token；跨位�
 
 位置 $t$ 预测 $x_{t+1}$ 时不能读取未来 token。令
 
-$$M_{ij}=\begin{cases}0,&j\le i,\\-\infty,&j>i,
-\end{cases}$$
+```math
+M_{ij}=\begin{cases}0,&j\le i,\\-\infty,&j>i,
+\end{cases}
+```
 
 再计算 $\mathrm{softmax}(QK^\top/\sqrt{d_k}+M)$，未来位置概率为零。
 
